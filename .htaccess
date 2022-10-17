@@ -1,0 +1,15 @@
+# Fix Rewrite
+Options -Multiviews
+
+# Mod Rewrite
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /BuckVest/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_URI} ^\/(path\/to\/some\/folder|dummy)\.*$
+
+
+# used for php pages such as "yoursite.com/login.php" will become "yoursite.com/login/"
+RewriteRule ^([a-z_]+)\/?$ $1.html [NC]

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="styles/cards.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="shortcut icon" href="./images/bitcoin-btc-logo.svg" type="image/x-icon">
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <link rel="stylesheet" href="http://localhost/webicons/css/all.css">
+
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/jquery.modal.min.css">
+    <link rel="stylesheet" href="styles/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="styles/dataTables.jqueryui.min.css">
+    <link rel="stylesheet" href="styles/responsive.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" /> -->
+    <link rel="shortcut icon" href="./images/bitcoin-btc-logo.svg" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- ==========Top Navigation======= -->
+    <div class="nav">
+        <a class="logo" href="dashboard.html">
+            <img src="images/bitcoin-btc-logo.svg" alt="">
+            <span class="logoTxt">ElonBTC</span>
+        </a>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </div>
+
+    <!-- ==========Dashboard Container======= -->
+
+    <div class="dashboard">
+
+        <!-- ==========Pc Sidebar======= -->
+
+        <div class="sidebar">
+            <div class="sidebar-profile">
+                <div><img src="images/avatar.png" class="sidebar-profile-pix" alt=""></div>
+                <div class="sidebar-user-info">
+                    <span class="sidebar-username" id="side_bar_username"></span>
+                    <span class="sidebar-email" id="side_bar_email"></span>
+                </div>
+            </div>
+            <div class="sidebar-links-container">
+                <a href="#" class="sidebar-links"><i class="fa fa-layer-group"></i> Dashboard</a>
+                <a href="#profile" class="sidebar-links"><i class="fa fa-user"></i> My Profile</a>
+                <a href="#deposit" class="sidebar-links"><i class="fa fa-wallet"></i> Wallet Deposit</a>
+                <a href="#withdrawal" class="sidebar-links"><i class="fa fa-download"></i> Withdrawal</a>
+                <a href="#referrals" class="sidebar-links"><i class="fa fa-users"></i> Refferals</a>
+                <a href="contact-us" class="sidebar-links"><i class="fa fa-headset"></i> Contact Support</a>
+                <a onclick="Logout()" class="sidebar-links"><i class="fa fa-arrow-right-from-bracket"></i> Logout</a>
+            </div>
+        </div>
+
+
+        <!-- ==========Mobile Sidebar======= -->
+
+        <div class="sideNav" id="sidenav">
+            <span class="closeBtn" id="close"><i class="fas fa-times"></i></span>
+            <div class="sidebar-links-container">
+                <a href="#" class="sidebar-links"><i class="fa fa-layer-group"></i> Dashboard</a>
+                <a href="#profile" class="sidebar-links"><i class="fa fa-user"></i> My Profile</a>
+                <a href="#deposit" class="sidebar-links"><i class="fa fa-wallet"></i> Wallet Deposit</a>
+                <a href="#withdrawal" class="sidebar-links"><i class="fa fa-download"></i> Withdrawal</a>
+                <a href="#referrals" class="sidebar-links"><i class="fa fa-users"></i> Refferals</a>
+                <a href="contact-us" class="sidebar-links"><i class="fa fa-headset"></i> Contact Support</a>
+                <a onclick="Logout()" class="sidebar-links"><i class="fa fa-arrow-right-from-bracket"></i> Logout</a>
+            </div>
+        </div>
+
+        <!-- ==========main content======= -->
+
+        <div class="main">
+            <div class="dashboard-title">
+                <div class="top-title">
+                    Dashboard
+                </div>
+                <div class="top-btn">
+                    <a href="#" class="top-btn1">Investments</a>
+                    <a href="#ex1" rel="modal:open" class="top-btn2">Withdrawal</a>
+                </div>
+            </div>
+
+
+            <div class="main-menu">
+
+                <div class="stats-card">
+                    <div class="stats-card-child">
+                        <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
+                        <div class="livecoinwatch-widget-1" lcw-coin="BTC" lcw-base="USD" lcw-secondary="BTC"
+                            lcw-period="d" lcw-color-tx="#454545" lcw-color-pr="#880fc4" lcw-color-bg="#ffffff"
+                            lcw-border-w="0"></div>
+                    </div>
+                    <div class="stats-card-child">
+                        <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script>
+                        <div class="livecoinwatch-widget-1" lcw-coin="USDT" lcw-base="USD" lcw-secondary="USDT"
+                            lcw-period="d" lcw-color-tx="#454545" lcw-color-pr="#1d39f2" lcw-color-bg="#ffffff"
+                            lcw-border-w="0"></div>
+                    </div>
+                </div>
+                <!-- <div class="main-header">
+            </div> -->
+
+                <!-- ==========Dashboard Cards======= -->
+                <div class="main-card_container">
+                    <div class="main-card_content">
+                        <div class="main-card">
+                            <div class="main-card_body">
+                                <div class="card-price">
+                                    <span class="balance" id="wallet-balance">$0</span>
+                                    <p class="card-txt">Wallet</p>
+                                </div>
+                                <div class="card-icon">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-card">
+                            <div class="main-card_body">
+                                <div class="card-price">
+                                    <span class="balance" id="earnings">$0</span>
+                                    <p class="card-txt">Earnings</p>
+                                </div>
+                                <div class="card-icon">
+                                    <i class="fas fa-hand-holding-dollar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-card">
+                            <div class="main-card_body">
+                                <div class="card-price">
+                                    <span class="balance" id="referral-balance">$0</span>
+                                    <p class="card-txt">Referral Bonus</p>
+                                </div>
+                                <div class="card-icon">
+                                    <i class="fas fa-arrows-down-to-people"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- profile section -->
+
+            <div class="profile-tab" id="profile">
+                <div class="tab-content">
+                    <div class="tabs__tab active" id="tab_1" data-tab-info>
+                        <div class="profile-info">
+                            <div class="profile-info-content">
+                                <img src="images/avatar.png" alt="avatar">
+                                <h1 id="profile_username"><i class="fa fa-user"></i></h1>
+                                <span class="user_email"><i class="fa fa-at"></i></span>
+                                <a onclick="CopyReferralLink(this)" id="refferalLink"></a>
+                                <div class="wallet_info">
+                                    <span class="wallet-address-label">Wallet address <i class="fa fa-copy"></i></span>
+                                    <span id="wallet-address-text" onclick="copyWalletAddress(this)"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tabs__tab" id="tab_3" data-tab-info>
+                        <div class="security-container">
+                            <h1>Change Password</h1>
+                            <hr>
+                            <form action="GET">
+                                <div class="form-field">
+                                    <label for="">Old Password</label>
+                                    <input type="password" name="currentPassword" placeholder="Current Password*"
+                                        required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="">New Password</label>
+                                    <input type="password" name="currentPassword" placeholder="New Password*" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="">Confirm Password</label>
+                                    <input type="password" name="currentPassword" placeholder="Confirm Password*"
+                                        required>
+                                </div>
+                            </form>
+
+                            <button type="submit" class="button">Update</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="transfer-cash">
+                    <span>Transfer to ElonBTC user</span>
+                    <div class="transfer-info">
+                        <input type="text" name="wallet-address" id="transfer-wallet-address" placeholder="Enter ElonBTC user address">
+                        <input type="tel" name="amount" id="transfer-amount" placeholder="Enter amount">
+                        <button type="button" class="send-btn" id="transferCryptoBtn" onclick="TransferCrypto()">Send</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- deposit section -->
+            <div class="deposit-card-container" id="deposit">
+                <div class="deposit-card-header">
+                    Deposit into your Wallet
+                </div>
+                <div class="deposit-card-menu">
+                    <div class="deposit-card">
+                        <img src="images/opengraph.png" alt="">
+                        <h4>Pay using Bitcoin (Blockchain gateway)</h4>
+                        <button class="deposit-btn">Pay with Blockchain</button>
+                    </div>
+
+                    <div class="deposit-card">
+                        <img src="images/Tether.png" alt="">
+                        <h4>Pay using USDT</h4>
+                        <button class="deposit-btn">Pay with USDT</button>
+                    </div>
+
+                    <div class="deposit-card" style="display: block;">
+                        <img src="images/paypal.png" alt="">
+                        <h4>Pay using PayPal</h4>
+                        <button class="deposit-btn">Pay with PayPal</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- deposit history section -->
+
+
+            <div class="table-container">
+                <div class="table-content">
+                    <div class="table-header">
+                        Deposit History
+                    </div><br>
+
+                    <table id="example1" class="display styled-table" style="width: 100%;">
+                        <thead>
+                            <th>Reference No</th>
+                            <th>Package</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </thead>
+
+                        <tbody>
+                            <tr class="active-row">
+                                <td>11002093</td>
+                                <td>Basic</td>
+                                <td>$50</td>
+                                <td>Pending</td>
+                                <td>2022-07-12 11:07am</td>
+                            </tr>
+
+                            <tr class="">
+                                <td>11002093</td>
+                                <td>Basic</td>
+                                <td>$50</td>
+                                <td>Pending</td>
+                                <td>2022-07-12 11:07am</td>
+                            </tr>
+
+                            <tr class="">
+                                <td>11002093</td>
+                                <td>Basic</td>
+                                <td>$50</td>
+                                <td>Pending</td>
+                                <td>2022-07-12 11:07am</td>
+                            </tr>
+
+                            <tr class="">
+                                <td>11002093</td>
+                                <td>Basic</td>
+                                <td>$50</td>
+                                <td>Pending</td>
+                                <td>2022-07-12 11:07am</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <!-- withdrawal history section -->
+
+            <div class="table-container" id="withdrawal">
+                <div class="table-content">
+                    <div class="table-header">
+                        Withdrawal History
+                    </div><br>
+
+                    <table id="example2" class="display styled-table" style="width: 100%;">
+                        <thead>
+                            <th>Reference No</th>
+                            <th>Package</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </thead>
+
+                        <tbody>
+                            <tr class="active-row">
+                                <td>11002091</td>
+                                <td>Basic</td>
+                                <td>$50</td>
+                                <td>Pending</td>
+                                <td>2022-07-12 11:07am</td>
+                            </tr>
+
+                            <tr class="">
+                                <td>11002092</td>
+                                <td>Basic</td>
+                                <td>$50</td>
+                                <td>Pending</td>
+                                <td>2022-07-12 11:07am</td>
+                            </tr>
+
+                            <tr class="">
+                                <td>11002093</td>
+                                <td>Basic</td>
+                                <td>$50</td>
+                                <td>Pending</td>
+                                <td>2022-07-12 11:07am</td>
+                            </tr>
+
+                            <tr class="">
+                                <td>11002094</td>
+                                <td>Basic</td>
+                                <td>$50</td>
+                                <td>Pending</td>
+                                <td>2022-07-12 11:07am</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <!-- referrals section -->
+
+            <div class="table-container" id="referrals">
+                <div class="table-content">
+                    <div class="table-header">
+                        My Referrals
+                    </div><br>
+
+                    <table id="example3" class="display styled-table" style="width: 100%;">
+                        <thead>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </thead>
+
+                        <tbody id="my-referrals">
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- referrals section -->
+
+    </div>
+
+
+    <div id="ex1" class="modal bg-modal">
+        <div class="modal-content">
+            <h1>Wallet Withdrawal</h1>
+            <h3>Available Balance</h3>
+            <h1 id="wallet-balance">$100.00</h1>
+            <hr>
+            <div>
+                <h2>Enter amount and select payment type below</h2>
+                <div class="input-field">
+                    <i class="fa fa-dollar"></i>
+                    <input type="text" name="" id="" placeholder="Enter Amount to Withdraw">
+                </div>
+
+                <div class="input-field">
+                    <i class="fa fa-wallet"></i>
+                    <input type="text" name="" id="" placeholder="Enter Wallet Address">
+                </div>
+
+                <select name="" id="">
+                    <option value="">Select Payment Type</option>
+                    <option value="">Bitcoin</option>
+                    <option value="">USDT</option>
+                    <option value="">Paypal</option>
+                </select>
+            </div>
+            <button class="button">Withdraw</button>
+            <!-- <p>Your withdrawal will processed within 15mins</p> -->
+        </div>
+    </div>
+</body>
+
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<!-- <script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.jqueryui.min.js"></script>
+<script src="js/responsive.dataTables.min.js"></script> -->
+<script src="js/jquery.modal.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#example1,#example2,#example3,#example4').DataTable();
+    })
+</script>
+<script src="js/script.js"></script>
+<script src="js/requests.js"></script>
+<script src="js/Crypto.js"></script>
+<script src="js/main.js"></script>
+<script src="js/events.js"></script>
+<!-- <script src="js/session.js"></script> -->
+
+</html>

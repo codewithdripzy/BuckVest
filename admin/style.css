@@ -1,0 +1,23 @@
+.modal-title h2 {
+    font-weight: 600;
+    font-size  : x-large;
+    display: inline-block;
+}
+
+.modal-title {
+    padding      : 10px 0;
+}
+
+.modal-content-del {
+    font-size: 18px;
+    padding  : 10px 0 30px 0;
+}
+
+.modal-buttons {
+    float: right;
+}
+
+.modal-buttons .action-btn {
+    padding: 10px 20px;
+}
+

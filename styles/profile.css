@@ -1,0 +1,150 @@
+.profile-tab {
+    margin: 20px 0px 0px 20px;
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+
+[data-tab-info] {
+    display: none;
+}
+
+.active[data-tab-info] {
+    display: block;
+}
+
+.tab-content {
+    font-size  : 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color      : rgb(82, 75, 75);
+}
+
+.tabs {
+    font-size: 40px;
+    color    : rgb(255, 255, 255);
+    display  : flex;
+    margin   : 0;
+}
+
+.tabs span {
+    background: #ddd;
+    color     : black;
+    padding   : 10px;
+    /* border : 1px solid rgb(255, 255, 255); */
+}
+
+
+.tabs span:hover {
+    background: rgb(164, 164, 164);
+    cursor    : pointer;
+    color     : black;
+}
+
+
+.tabs__tab {
+    /* border-radius: 20px; */
+}
+
+.profile-info {
+    background-color: #fff;
+    width           : 300px;
+    height          : auto;
+    border-radius   : 20px;
+    padding         : 20px 10px;
+    box-shadow      : 0px 0px 5px 1px #ccc;
+    /* text-align   : center; */
+}
+
+.profile-info-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    row-gap: 15px;
+    align-items: center;
+    color: #111;
+}
+
+.profile-info img {
+    width        : 100px;
+    height       : 100px;
+    align-items  : center;
+    border-radius: 50%;
+    padding      : 4px;
+    margin       : 14px;
+    border       : 3px solid #880fc4;
+    box-shadow   : 0px 0px 5px 1px #ccc;
+}
+
+.profile-info h1 {
+    font-size  : large;
+    font-weight: 600;
+}
+
+.security-container {
+    display         : block;
+    justify-content : center;
+    align-items     : center;
+    background-color: #fff;
+    width           : 330px;
+    height          : auto;
+    border-radius   : 20px;
+    line-height     : 50px;
+    margin          : 12px 0;
+    padding         : 20px;
+    box-shadow      : 0px 0px 5px 1px #ccc;
+}
+
+form {
+    display        : block;
+    justify-content: center;
+}
+
+.security-container h1 {
+    font-size : 26px;
+    text-align: start;
+}
+
+.form-field input {
+    border   : 1px solid #ddd;
+    padding  : 8px;
+    width    : 330px;
+    font-size: 20px;
+}
+
+.security-container .button {
+    border          : none;
+    background-color: blue;
+    color           : #ffffff;
+    padding         : 10px 18px;
+    width           : 100px;
+    cursor          : pointer;
+    outline         : none;
+    border-radius   : 6px;
+}
+
+.form-field input::placeholder {
+    font-size: 18px;
+}
+
+
+.wallet-address-label{
+    display: inline;
+}
+
+
+#wallet-address-text{
+    font-size: small;
+    color: #880fc4;
+    display: inline;
+    word-wrap: break-word;
+}
+
+.wallet_info{
+    display: block;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}

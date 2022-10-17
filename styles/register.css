@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import url('./style.css');
+.login {
+    display        : flex;
+    justify-content: center;
+}
+
+.container {
+    position           : relative;
+    display            : flex;
+    text-align         : center !important;
+    height             : 500px;
+    width              : 500px;
+    margin-top         : 5%;
+    align-items        : center;
+    justify-content    : center !important;
+}
+
+form {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+}
+
+.title {
+    font-size    : 2.6rem;
+    color        : #fff;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    width                : 400px;
+    height               : 55px;
+    background-color     : #f0f0f0;
+    margin               : 10px 0;
+    border-radius        : 55px;
+    display              : grid;
+    grid-template-columns: 15% 85%;
+    padding              : 0 0.4rem;
+    position             : relative;
+    align-items          : center;
+}
+
+.input-field i {
+    text-align : center;
+    line-height: 55px;
+    color      : #acacac;
+    font-size  : 1.5rem;
+}
+
+.input-field input {
+    background    : none;
+    outline       : none;
+    border        : none;
+    font-weight   : 500;
+    font-size     : 1.2rem;
+    color         : #333;
+}
+
+.input-field input:placeholder-shown {
+    color      : #aaa;
+    font-weight: 500;
+}
+
+.btn {
+    padding: 15px;
+    outline         : none;
+    cursor          : pointer;
+    border          : none;
+    border-radius   : 48px;
+    background-color: #de9f21;
+    color           : #ffffff;
+    text-transform  : uppercase;
+    font-weight     : 600;
+    margin          : 10px 0;
+    transition      : all .5s;
+}
+
+.other-links{
+    color: #f0f0f0;
+}
+
+.other-links a{
+    color: #de9f21;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@media screen and (max-width:568px) {
+    .title {
+        font-size: 1.9rem;
+    }
+
+    .input-field {
+        width: 300px;
+    }
+
+    .input-field input {
+        font-size: 1.1rem;
+    }
+
+}

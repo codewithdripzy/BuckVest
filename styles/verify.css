@@ -1,0 +1,48 @@
+@import url('./style.css');
+
+.verification-conatiner {
+    margin-top:10%;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+
+.card {
+    background-color: #fff;
+    padding         : 20px 80px 40px 80px;
+    border-radius   : 20px;
+    text-align      : center;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+}
+
+.card-title h1 {
+    font-size  : 34px;
+    font-family: sans-serif;
+    margin     : 10px 0 10px 0;
+}
+
+.card-body p {
+    font-size    : 18px;
+    margin-bottom: 12px;
+    color        : #575757e7;
+}
+
+.card-body .btn {
+    padding         : 15px 35px;
+    font-size       : 20px;
+    background      : transparent;
+    border          : none;
+    background-color: #de9f21;
+    color           : #f2eeee;
+    cursor          : pointer;
+    outline         : none;
+    border-radius   : 30px;
+}
+/* .vrfycardbyd{
+    padding: 10px 50px;
+    display: block;
+    text-align: center;
+} */

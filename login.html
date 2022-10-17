@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="shortcut icon" href="./images/bitcoin-btc-logo.svg" type="image/x-icon">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="images/bitcoin-btc-logo.svg" alt="logo">
+            <span>ELON BTC</span>
+        </a>
+
+        <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
+        <div class="navLinks">
+            <ul>
+                <li><a href="index.html"> Home </a></li>
+                <li><a href="about-us.html"> About Us </a></li>
+                <li><a href="#faq"> Faq </a></li>
+                <li><a href="contact-us.html"> Contact Us </a></li>
+                <a href="login.html" class="button">Login</a>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="sideNav" id="sidenav">
+        <a class="closeBtn" id="close"><i class="fas fa-times"></i></a>
+        <a href="index.html">Home</a>
+        <!-- <a href="">Services</a> -->
+        <a href="">About Us</a>
+        <a href="">Faq</a>
+        <a href="contact-us.html">Contact</a>
+
+        <a href="login.html" class="loginBtn"><button class="button ">Login</button></a>
+
+    </div>
+
+
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <main>
+
+        <div class="login" id="loginContainer">
+            <div class="container">
+                <div class="form-container">
+                    <div class="signin-signup">
+                        <form autocomplete="on" class="sign-in-form">
+                            <h2 class="title"> Sign In</h2>
+                            <div class="alert" id="alert"></div>
+                            <div class="input-field">
+                                <i class="fa fa-envelope"></i>
+                                <input type="email" placeholder="Email" id="email" autocomplete="on" required>
+                            </div>
+                            <div class="input-field">
+                                <i class="fa fa-lock"></i>
+                                <input type="password" placeholder="Password" id="password" required>
+                            </div>
+                        </form>
+
+                        <button type="submit" class="btn" onclick="Login()">Login</button>
+                    </div>
+                    <a class="fpass" href="forgotPassword.html">Forgot Password?</a>
+                    <div class="other-links">
+                        <p>Don't have an account?<a href="register.html">Create</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/requests.js"></script>
+    <script src="js/login_checker.js"></script>
+</body>
+
+</html>

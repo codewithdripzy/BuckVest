@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url('../fonts/HelveticaNeue.ttf');
+}
+
+/* Reset Style */
+*,*::after,*::before {
+    padding    : 0;
+    margin     : 0;
+    box-sizing : border-box;
+  }
+  
+  html{
+    scroll-behavior: smooth;
+  }
+  
+  /* custom scroll bar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  
+
+  
+  #stop-scrolling{
+    height: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  .preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999999;
+    background-image: url('/images/Ball-Drop-Preloader-1-1.gif');
+    background-repeat: no-repeat;
+    background-color: #fff;
+    background-position: center;
+  }

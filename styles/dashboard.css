@@ -1,0 +1,500 @@
+@import url('./fontawesome/css/all.min.css');
+@import url('./cards.css');
+@import url('./profile.css');
+@import url('./table.css');
+@import url('./main.css');
+@import url('./deposit.css');
+
+* {
+    padding    : 0;
+    margin     : 0;
+    font-size  : 16px;
+    font-family: "Helvetica Neue";
+}
+
+
+html {
+    scroll-behavior: smooth;
+    transition     : 0.3s ease;
+}
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+body {
+    overflow-y      : auto;
+    overflow-x      : hidden;
+    background-color: #f2f6f9;
+    scroll-behavior : smooth;
+    transition      : 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+}
+
+.action-btn {
+    margin: 4px;
+    cursor: pointer;
+
+}
+
+.check-btn,
+.delete-btn {
+    border          : none;
+    outline         : none;
+    background-color: none;
+    color           : white;
+    padding         : 6px;
+    border-radius   : 4px;
+}
+
+.check-btn {
+    background-color: green;
+}
+
+.delete-btn {
+    background-color: rgb(198, 0, 0);
+}
+
+/* dashboard navigation styling */
+.nav {
+    position       : fixed;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    background     : linear-gradient(30deg, #880fc4, #1d39f2);
+    padding        : 14px 2%;
+    top            : 0;
+    left           : 0;
+    right          : 0;
+    overflow       : hidden;
+    z-index        : 999;
+}
+
+
+/* dashboard mobile navigation styling */
+.sideNav {
+    height          : 100%;
+    width           : 250px;
+    position        : fixed;
+    top             : 0;
+    right           : 0;
+    background-color: #000000;
+    overflow-x      : hidden;
+    transition      : .5s;
+    padding-top     : 60px;
+    z-index         : 999;
+    display         : none;
+    animation       : slide-in .8s;
+    opacity         : 1;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateX(200px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.sideNav .closeBtn {
+    position   : absolute;
+    top        : 25px;
+    right      : 10px;
+    font-size  : 24px;
+    margin-left: 50px;
+    cursor     : pointer;
+    color      : #fff;
+}
+
+.logo {
+    display    : flex;
+    align-items: center;
+}
+
+.logo img {
+    width : 45px;
+    height: 45px;
+}
+
+.logoTxt {
+    color      : #fff;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size  : 24px;
+    margin-left: 10px;
+}
+
+.closeBtn i,
+.hamburger i {
+    font-size: 29px;
+}
+
+.hamburger {
+    display: none;
+    color  : #fff;
+}
+
+.dashboard {
+    width         : 100%;
+    display       : flex;
+    flex-direction: row;
+}
+
+
+.dashboard-title {
+    display        : flex;
+    justify-content: space-between;
+    background     : linear-gradient(90deg, #880fc4, #1d39f2);
+    color          : #fff;
+    padding        : 85px 70px;
+}
+
+.dashboard-title .top-title {
+    font-size  : 30px;
+    font-weight: 600;
+}
+
+.top-btn1 {
+    width           : 120px;
+    background-color: transparent;
+    padding         : 8px 14px;
+    color           : white;
+    border          : 2px solid #fff;
+    border-radius   : 30px;
+    cursor          : pointer;
+}
+
+.top-btn2 {
+    background-color: #de9f21;
+    padding         : 8px 14px;
+    color           : white;
+    border          : none;
+    border-radius   : 30px;
+    cursor          : pointer;
+}
+
+.sidebar {
+    width           : 20%;
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    background-color: #070707;
+    color           : #fff;
+    height          : 100vh;
+    margin-top      : 70px;
+
+}
+
+.sidebar-links-container {
+    display   : block;
+    margin-top: 10px;
+}
+
+.sidebar-links {
+    display                   : block;
+    padding                   : 20px;
+    text-decoration           : none;
+    color                     : #fff;
+    cursor                    : pointer;
+    transition                : 0.3s ease 1;
+    border-top-right-radius   : 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.sidebar-links i {
+    margin-right: 10px;
+}
+
+.sidebar-links:hover {
+    background: #121212;
+    transition: 0.3s ease 1;
+}
+
+.sidebar-profile {
+    display       : flex;
+    flex-direction: row;
+    margin-top    : 15px;
+    padding       : 10px;
+}
+
+.sidebar-user-info {
+    padding    : 5px;
+    margin-left: 5px;
+}
+
+.sidebar-profile-pix {
+    width        : 30px;
+    height       : 30px;
+    object-fit   : cover;
+    border-radius: 100px;
+    padding      : 5px;
+    border       : 2px solid #880fc4;
+}
+
+.sidebar-username,
+.sidebar-email {
+    display: block;
+}
+
+.sidebar-email {
+    color: #ababab;
+}
+
+/* Dashboard main area */
+
+.main {
+    width      : calc(100% - 20%);
+    height     : 100vh;
+    margin-top : 70px;
+    margin-left: 20%;
+}
+
+.main-menu {
+    margin-top: -50px;
+}
+
+
+.main-header {
+    display        : flex;
+    flex           : auto;
+    justify-content: space-between;
+    padding        : 10px 8px 10px 8px;
+    color          : #fff;
+}
+
+.sidebar-buttons {
+    padding: 20px;
+    cursor : pointer;
+}
+
+.sidebar-buttons span {}
+
+.main-card_container {
+    /* display        : flex; */
+    /* flex-direction : row; */
+    /* width          : 100%; */
+    /* flex-direction : row; */
+    /* justify-content: center; */
+    padding        : 15px 10px;
+}
+
+.main-card_content{
+    /* border: 2px solid black; */
+    /* display: ; */
+    justify-content: center;
+    align-items    : center;
+    flex-wrap      : wrap;
+}
+
+.main-card_container .main-card {
+    width        : 330px;
+    display      : inline-block;
+    background   : linear-gradient(45deg, #880fc4 0%, #1d39f2 100%);
+    color        : white;
+    font-size    : 22px;
+    margin       : 10px;
+    border-radius: 20px;
+    padding      : 25px 0;
+}
+
+.main-card .main-card_body {
+    display        : flex;
+    flex-direction : row;
+    justify-content: space-evenly;
+    align-items    : center;
+    padding        : 8px 0;
+}
+
+.card-price {
+    line-height: 50px;
+}
+
+.card-price .balance {
+    font-size  : 46px;
+    font-weight: bolder;
+}
+
+.card-txt {
+    font-size: 20px;
+    color    : #dddbdb;
+}
+
+.card-icon i {
+    font-size: 80px;
+    color    : #dddbdb;
+}
+
+/* ======withdrawal Modal pop up============ */
+
+
+.modal-content i {
+    font-size: 24px;
+}
+
+.modal-content {
+    text-align: center !important;
+    position  : relative;
+}
+
+.modal-content h1 {
+    font-size: 28px;
+}
+
+#wallet-balance {
+    font-size    : 35px;
+    margin-bottom: 10px;
+}
+
+.modal-content h3 {
+    font-size: 18px;
+    color    : red;
+}
+
+.modal-content .input-field {
+    height               : 55px;
+    background-color     : #f0f0f0;
+    margin               : 10px 0;
+    border-radius        : 55px;
+    display              : grid;
+    grid-template-columns: 15% 85%;
+    padding              : 0 0.4rem;
+    position             : relative;
+    align-items          : center;
+}
+
+.modal-content .input-field input {
+    outline    : none;
+    border     : none;
+    background : none;
+    font-size  : 20px;
+    font-weight: bold;
+}
+
+.modal-content .input-field input:placeholder-shown {
+    color      : #aaa;
+    font-weight: 500;
+}
+
+select {
+    outline         : none;
+    border          : none;
+    cursor          : pointer;
+    width           : 220px;
+    font-size       : 18px;
+    background-color: #f0f0f0;
+    padding         : 10px;
+    border-radius   : 12px;
+    margin-bottom   : 10px;
+}
+
+.modal-content button {
+    outline         : none;
+    border          : none;
+    cursor          : pointer;
+    color           : white;
+    background-color: #880fc4;
+    padding         : 14px 22px;
+    border-radius   : 30px;
+}
+.profile-info{
+    text-align: center;
+}
+.h{
+    font-size: medium;
+    display: block;
+    text-align: center;
+}
+#refferalLink{
+    font-size: small;
+    color: #880fc4;
+    display: block;
+    text-align: center;
+    word-wrap: break-word;
+}
+/* Referral styling*/
+.referral-container {
+    width    : 100%;
+    max-width: 1140px;
+    margin   : 0 auto;
+}
+
+/* Referral Responsive Table Style */
+.responsive-table {
+    background-color: #fefefe;
+    border-collapse : collapse;
+    border-radius   : 10px;
+    box-shadow      : 0 0 10px rgba(0, 0, 0, 0.02);
+    width           : 100%;
+    margin          : 2rem 0;
+    overflow        : hidden;
+}
+
+/* Referral SVG User Icon Style */
+.user-icon {
+    width       : 100%;
+    max-width   : 4rem;
+    height      : 50px;
+    margin-right: 1rem;
+}
+
+
+
+@media screen and (max-width:578px) {
+    .sidebar {
+        display: none;
+    }
+
+    .hamburger {
+        font-size: 24px;
+        display  : block;
+    }
+
+    .main {
+        width   : 100%;
+        overflow: hidden;
+        height  : auto;
+        margin  : 0;
+        padding : 50px 0;
+    }
+
+    .top-btn {
+        display       : flex;
+        flex-direction: column;
+        gap           : 10px;
+    }
+
+    .dashboard-title {
+        padding: 50px 15px;
+    }
+
+    .main-card_container {
+        display: block;
+    }
+
+    .main-card_content{
+        display: flex;
+    }
+
+    .main .main-header .hamburger {
+        display: block;
+    }
+}

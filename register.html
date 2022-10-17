@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="styles/alerts.css">
+    <link rel="shortcut icon" href="./images/bitcoin-btc-logo.svg" type="image/x-icon">
+</head>
+
+<body>
+    <nav>
+            <a href="index.html" class="logo">
+            <img src="images/bitcoin-btc-logo.svg" alt="logo">
+            <span>ELON BTC</span>
+            </a>
+        </div>
+
+        <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
+        <div class="navLinks">
+            <ul>
+                <li><a href="index.html"> Home </a></li>
+                <li><a href="about-us.html"> About Us </a></li>
+                <li><a href="#faq"> Faq </a></li>
+                <li><a href="contact-us.html"> Contact Us </a></li>
+                <a href="login.html" class="button">Login</a>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="sideNav" id="sidenav">
+        <a class="closeBtn" id="close"><i class="fas fa-times"></i></a>
+        <a href="index.html">Home</a>
+        <a href="">About Us</a>
+        <a href="contact-us.html">Contact</a>
+
+        <a href="login.html"><button class="button">Login</button></a>
+
+    </div>
+
+
+    </div>
+
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <main>
+
+        <div class="login">
+            <div class="container">
+                <div class="form-container">
+                    <div class="signin-signup">
+                        <form class="sign-in-form">
+                            <h2 class="title">Register</h2>
+                            <div class="alert" id="alert"></div>
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input type="text" placeholder="Name" id="fullname" required>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input type="text" placeholder="Email" id="email" oninput="ValidateEmail()" required>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" placeholder="Password" id="rgstpsw" autocomplete="on" oninput="checkPasswordLength()" required>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" placeholder="Confirm Password" id="confirmpsw"  autocomplete="off" oninput="validatePassword()" required>
+                            </div>
+                            <button type="button" class="btn" onclick="SignUp()">Create Account</button>
+                        </form>
+                        <div class="other-links"><p>Already have an account?<a href="login.html">Sign in</a></p></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- <script src="js/script.js"></script> -->
+</body>
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/events.js"></script>
+<script src="js/requests.js"></script>
+<script src="js/login_checker.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+</html>

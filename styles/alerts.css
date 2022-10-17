@@ -1,0 +1,21 @@
+.alert{
+    padding: 10px;
+    font-size: small;
+    display: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.alert-danger{
+    color: tomato;
+}
+.alert-caution{
+    color: #de9f21;
+}
+.alert-safe{
+    color: lawngreen;
+}
+.alert-info{
+    color: dodgerblue;
+}
+.show{
+    display: block;
+}

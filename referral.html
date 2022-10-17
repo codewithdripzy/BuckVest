@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refferal</title>
+</head>
+
+<body>
+    <script>
+        <script src="js/requests.js"></script>
+    <!-- http://localhost/elonbtc/referral?user=emmafikayomi2004@gmail.com -->
+    // </head>
+
+    //
+
+    <body>
+        <script>
+        // emmafikayomi2004@gmail.com
+            if(sessionStorage.getItem("state") == null || sessionStorage.getItem("state") == undefined || !sessionStorage.getItem("state")){
+                // do nothing, user is not logged_in
+                let data_val = window.location.search;
+
+            sessionStorage.setItem("referral_email", data_val.split("=")[1]);
+            redirect("register")
+        }else{
+                redirect("dashboard");
+        }
+        </script>
+    </body>
+</body>
+
+</html>
