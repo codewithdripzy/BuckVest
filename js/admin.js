@@ -17,10 +17,37 @@ function deleteAccount(email){
         }
     });
 }
+
+function verifyAccount(email){
+    fetch(`../api/requests.php?request_type=verify_user&email=${email}`, {
+        method : "GET",
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: { 'Content-type': 'application/json' }
+    })
+    .then(res =>{
+        return res.json();
+    })
+    .then(res =>{
+        if(res.state){
+            alert("Query OK. Column Has Been deleted!");
+            location.reload();
+        }else{
+            alert("Something went wrong! Try again.")
+        }
+    });
+}
 function confirmPrompt(email){
     console.log(email);
     if(confirm('Are you sure you want to delete this record?')){
         deleteAccount(email);
+    }
+}
+
+function verifyUser(email){
+    console.log(email);
+    if(confirm('Are you sure you want to verify this user record?')){
+        verifyAccount(email);
     }
 }
 window.onload = function (){
@@ -77,7 +104,7 @@ window.onload = function (){
                     <td>${res[0][i].access_code}</td>
                     <td>${res[0][i].access_level}</td>
                     <td class="action-btn">
-                        <a href="#" class="action-btn check-btn"><i class="fas fa-check"></i></a>
+                        ${res[0][i].status == 0 ? '' : `<a onclick="verifyUser('` + res[0][i].email + `')" class="action-btn check-btn"><i class="fas fa-check"></i></a>`}
                         <a onclick="confirmPrompt('` + res[0][i].email + `')" class="action-btn delete-btn"><i class="fas fa-trash"></i></a>
                     </td>
                     <td>${res[0][i].created}</td>
@@ -129,7 +156,7 @@ window.onload = function (){
                     <td>${res[0][i].referrer_name}</td>
                     <td>${res[0][i].referrer_email}</td>
                     <td class="action-btn">
-                        <a href="#" class="action-btn check-btn"><i class="fas fa-check"></i></a>
+                        <a href="#" class="action-btn check-btn"><i class="fas fa-check"></i></a>}
                         <a href="#ex1" rel="modal:open" class="action-btn delete-btn"><i class="fas fa-trash"></i></a>
                     </td>
                     <td>${res[0][i].created}</td>

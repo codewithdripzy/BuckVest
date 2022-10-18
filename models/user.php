@@ -155,4 +155,22 @@ class User
 
         return $stmt;
     }
+
+    function verifyAccount($email){
+        if($this->emailExist($email)){
+            $query = "UPDATE " . $this->table_name . "
+            SET status = 1
+            WHERE email = '{$email}'";
+
+            $stmt = $this->conn->prepare($query);
+            if($stmt->execute()){
+                return true;
+            }else{
+                $this->show_error($stmt);
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 }

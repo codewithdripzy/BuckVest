@@ -44,7 +44,7 @@
                     $wallet->balance = 0;
                     $wallet->wallet_type = 1;
                     $wallet->wallet_key = null;
-                    $wallet->access_code = md5("ELON" . rand(0, 10000000) . $user->email);
+                    $wallet->access_code = md5("bucks" . rand(0, 1000) . $user->email . date("d-m-y H:I:s"));
                     $wallet->status = 1;
 
                     if($wallet->createWallet()){

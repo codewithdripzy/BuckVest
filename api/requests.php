@@ -26,7 +26,7 @@
                         $flags['msg'] = 'success';
                     }else{
                         $flags['state'] = true;
-                        $flags['msg'] = 'Something went wrong! it is not your fault.';
+                        $flags['msg'] = 'Success';
                     }
                 }else{
                     $flags['state'] = false;
@@ -36,13 +36,13 @@
                 print_r(json_encode($flags));
                 return $flags;
             }
-            else if($_REQUEST['request_type'] == 'delete_user'){
+            else if($_REQUEST['request_type'] == 'verify_user'){
                 if(isset($_REQUEST['email']) && !empty($_REQUEST['email'])){
-                    if($user->deleteAccount($_REQUEST['email'])){
+                    if($user->verifyAccount($_REQUEST['email'])){
                         $flags['state'] = true;
                         $flags['msg'] = 'success';
                     }else{
-                        $flags['state'] = true;
+                        $flags['state'] = false;
                         $flags['msg'] = 'Something went wrong! it is not your fault.';
                     }
                 }else{
