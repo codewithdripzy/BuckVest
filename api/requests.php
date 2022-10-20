@@ -53,6 +53,57 @@
                 print_r(json_encode($flags));
                 return $flags;
             }
+            else if($_REQUEST['request_type'] == 'verify_transaction'){
+                if(isset($_REQUEST['transaction_type']) && !empty($_REQUEST['transaction_type'])){
+                    if(isset($_REQUEST['token']) && !empty($_REQUEST['token'])){
+                        if($transaction->verifyTransaction($_REQUEST['token'], $_REQUEST['wallet_address'], $_REQUEST['transaction_type'])){
+                            $flags['state'] = true;
+                            $flags['msg'] = 'success';
+                        }else{
+                            $flags['state'] = false;
+                            $flags['msg'] = 'Something went wrong! it is not your fault.';
+                        }
+                    }else{
+                        $flags['state'] = false;
+                        $flags['msg'] = 'Something went wrong! Invalid Request';
+                    } 
+                }else{
+                    $flags['state'] = false;
+                    $flags['msg'] = 'Something went wrong! Invalid Request';
+                }
+
+                print_r(json_encode($flags));
+                return $flags;
+            }
+            else if($_REQUEST['request_type'] == 'delete_transaction'){
+                if(isset($_REQUEST['transaction_type']) && !empty($_REQUEST['transaction_type'])){
+                    if(isset($_REQUEST['token']) && !empty($_REQUEST['token'])){
+                        $transaction->getTransactionByType($_REQUEST['wallet_address'], $_REQUEST['token']);
+                        print_r($transaction->to_wallet_address);
+                        if($wallet->deductAmount($transaction->to_wallet_address, $transaction->amount)){
+                            if($transaction->deleteTransaction($_REQUEST['token'], $_REQUEST['wallet_address'], $_REQUEST['transaction_type'])){
+                                $flags['state'] = true;
+                                $flags['msg'] = 'success';
+                            }else{
+                                $flags['state'] = false;
+                                $flags['msg'] = 'Something went wrong! it is not your fault.';
+                            }
+                        }else{
+                            $flags['state'] = false;
+                            $flags['msg'] = 'Something went wrong while deleting this record!';
+                        }
+                    }else{
+                        $flags['state'] = false;
+                        $flags['msg'] = 'Something went wrong! Invalid Request';
+                    }
+                }else{
+                    $flags['state'] = false;
+                    $flags['msg'] = 'Something went wrong! Invalid Request';
+                }  
+
+                print_r(json_encode($flags));
+                return $flags;
+            }
         }
     }
 ?>

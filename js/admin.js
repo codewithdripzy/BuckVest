@@ -30,13 +30,54 @@ function verifyAccount(email){
     })
     .then(res =>{
         if(res.state){
-            alert("Query OK. Column Has Been deleted!");
+            alert("Query OK. Column Has Been Verified!");
             location.reload();
         }else{
             alert("Something went wrong! Try again.")
         }
     });
 }
+function verifyTransaction(token, wallet_address, transaction_type){
+    fetch(`../api/requests.php?request_type=verify_transaction&wallet_address=${wallet_address}&token=${token}&transaction_type=${transaction_type}`, {
+        method : "GET",
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: { 'Content-type': 'application/json' }
+    })
+    .then(res =>{
+        return res.json();
+    })
+    .then(res =>{
+        if(res.state){
+            alert("Query OK. Column Has Been Verified!");
+            location.reload();
+        }else{
+            alert("Something went wrong! Try again.")
+        }
+    });
+}
+
+function deleteTransaction(token, wallet_address, transaction_type){
+    fetch(`../api/requests.php?request_type=delete_transaction&wallet_address=${wallet_address}&token=${token}&transaction_type=${transaction_type}`, {
+        method : "GET",
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: { 'Content-type': 'application/json' }
+    })
+    .then(res =>{
+        return res.json();
+    })
+    .then(res =>{
+        console.log(res);
+        if(res.state){
+            alert("Query OK. Column Has Been Deleted!");
+            location.reload();
+        }else{
+            alert("Something went wrong! Try again.")
+        }
+    });
+}
+
 function confirmPrompt(email){
     console.log(email);
     if(confirm('Are you sure you want to delete this record?')){
@@ -45,11 +86,23 @@ function confirmPrompt(email){
 }
 
 function verifyUser(email){
-    console.log(email);
     if(confirm('Are you sure you want to verify this user record?')){
         verifyAccount(email);
     }
 }
+
+function verifyTransact(ref_no, wallet_address, transaction_type){
+    if(confirm(`Are you sure you want to verify this ${transaction_type} record?`)){
+        verifyTransaction(ref_no, wallet_address, transaction_type);
+    }
+}
+
+function deleteTransact(ref_no, wallet_address, transaction_type){
+    if(confirm(`Are you sure you want to delete this ${transaction_type} record?`)){
+        deleteTransaction(ref_no, wallet_address, transaction_type);
+    }
+}
+
 window.onload = function (){
     fetch("../api/admin_fetch.php?request_type=dashboard_data", {
         method : "GET",
@@ -104,7 +157,7 @@ window.onload = function (){
                     <td>${res[0][i].access_code}</td>
                     <td>${res[0][i].access_level}</td>
                     <td class="action-btn">
-                        ${res[0][i].status == 0 ? '' : `<a onclick="verifyUser('` + res[0][i].email + `')" class="action-btn check-btn"><i class="fas fa-check"></i></a>`}
+                        ${res[0][i].status == 1 ? '' : `<a onclick="verifyUser('` + res[0][i].email + `')" class="action-btn check-btn"><i class="fas fa-check"></i></a>`}
                         <a onclick="confirmPrompt('` + res[0][i].email + `')" class="action-btn delete-btn"><i class="fas fa-trash"></i></a>
                     </td>
                     <td>${res[0][i].created}</td>
@@ -155,10 +208,6 @@ window.onload = function (){
                     <td>${res[0][i].status == 0 ? "Not Verified" : "Verified"}</td>
                     <td>${res[0][i].referrer_name}</td>
                     <td>${res[0][i].referrer_email}</td>
-                    <td class="action-btn">
-                        <a href="#" class="action-btn check-btn"><i class="fas fa-check"></i></a>}
-                        <a href="#ex1" rel="modal:open" class="action-btn delete-btn"><i class="fas fa-trash"></i></a>
-                    </td>
                     <td>${res[0][i].created}</td>
                 </tr>`
             }
@@ -193,8 +242,8 @@ window.onload = function (){
                     <td>${res[0][i].amount}</td>
                     <td>${res[0][i].status == 0 ? "Not Verified" : "Verified"}</td>
                     <td class="action-btn">
-                        <a href="#" class="action-btn check-btn"><i class="fas fa-check"></i></a>
-                        <a href="#ex1" rel="modal:open" class="action-btn delete-btn"><i class="fas fa-trash"></i></a>
+                        ${res[0][i].status == 0 ? `<a onclick="verifyTransact('` + res[0][i].reference_number + `', '` + res[0][i].wallet_address + `', 'deposit')" class="action-btn check-btn"><i class="fas fa-check"></i></a>` : ''}
+                        <a onclick="deleteTransact('` + res[0][i].reference_number + `', '` + res[0][i].wallet_address + `', 'deposit')" class="action-btn delete-btn"><i class="fas fa-trash"></i></a>
                     </td>
                     <td>${res[0][i].created}</td>
                 </tr>`
@@ -229,8 +278,8 @@ window.onload = function (){
                     <td>${res[0][i].amount}</td>
                     <td>${res[0][i].status == 0 ? "Not Verified" : "Verified"}</td>
                     <td class="action-btn">
-                        <a href="#" class="action-btn check-btn"><i class="fas fa-check"></i></a>
-                        <a href="#ex1" rel="modal:open" class="action-btn delete-btn"><i class="fas fa-trash"></i></a>
+                        ${res[0][i].status == 0 ? `<a onclick="verifyTransact('`+ res[0][i].token + `', '` + res[0][i].to_wallet_address + `', 'transfer')" class="action-btn check-btn"><i class="fas fa-check"></i></a>` : ''}
+                        <a onclick="deleteTransact('`+ res[0][i].token + `', '` + res[0][i].to_wallet_address + `', 'transfer')" class="action-btn delete-btn"><i class="fas fa-trash"></i></a>
                     </td>
                     <td>${res[0][i].created}</td>
                 </tr>`

@@ -24,7 +24,7 @@
                 $group = array();
                 $flags = array();
 
-                $stmt = $user->readAll();
+                $stmt = $user->readAllUsers();
                 
                 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                     $group[] = $row;
@@ -157,6 +157,9 @@
 
             else if($_REQUEST['request_type'] == 'dashboard_data'){
                 $res = array();
+                $group = array();
+                $flags = array();
+
                 $user_count = $user->readAllUsers()->rowCount();
                 $referral_count = $refferals->readAll()->rowCount();
                 // $transaction_count = $transaction->read()->rowCount();
@@ -166,14 +169,12 @@
 
                 $stmt = $transaction->readOtherTransactionBlocksByType();
                 
-                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    $group['users'] = $user_count;
-                    $group['referral'] = $referral_count;
-                    $group['withdrawals'] = $withdrawals;
-                    $group['transactions'] = $user_count;
-                    $group['cashflow'] = $cashflow;
-                    $group['wallet_gross'] = $wallet_gross;
-                }
+                $group['users'] = $user_count;
+                $group['referral'] = $referral_count;
+                $group['withdrawals'] = $withdrawals;
+                $group['transactions'] = $user_count;
+                $group['cashflow'] = $cashflow;
+                $group['wallet_gross'] = $wallet_gross;
     
                 $flags['state'] = true;
                 $flags['msg'] = 'success';

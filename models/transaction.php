@@ -129,10 +129,24 @@
             return $stmt;
         }
 
+        function verifyTransaction($token, $wallet_address, $transaction_type){
+            $query = "UPDATE " .  $this->table_name . "
+            SET status = 1
+            WHERE token = '{$token}' AND to_wallet_address = '{$wallet_address}' AND transaction_type = '{$transaction_type}'";
+
+            $stmt = $this->conn->prepare($query);
+
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+
         function readOneTransactionBlock($transaction_id){
             $query = "SELECT * FROM " .  $this->table_name . "
             WHERE id = '{$transaction_id}'
-            ORDER BY created ASC";
+            ORDER BY created ASC
+            LIMIT 0,1";
 
             $stmt = $this->conn->prepare($query);
 
@@ -205,6 +219,41 @@
                 return $cashflow;
             }
             return 0;
+        }
+
+        function deleteTransaction($token, $wallet_address, $transaction_type){
+            $query = "DELETE FROM " .  $this->table_name . "
+            WHERE token = '{$token}' AND to_wallet_address = '{$wallet_address}' AND transaction_type = '{$transaction_type}'";
+
+            $stmt = $this->conn->prepare($query);
+
+            if($stmt->execute()){
+                return true;
+            }
+            return false;
+        }
+        
+        function getTransactionByType($to_wallet_address, $token){
+            $query = "SELECT * FROM " .  $this->table_name . "
+            WHERE to_wallet_address = '{$to_wallet_address}' AND token = '{$token}'
+            AND transaction_type = 'deposit'
+            ORDER BY created ASC";
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                $this->from_wallet_address = $row['from_wallet_address'];
+                $this->to_wallet_address = $row['to_wallet_address'];
+                $this->amount = $row['amount'];
+                $this->token = $row['token'];
+                $this->created = $row['created'];
+
+                return true;
+            }
+            return false;
         }
     }
 ?>
