@@ -158,10 +158,16 @@
         }
 
         function verifyTransaction($token, $wallet_address, $transaction_type){
-            $query = "UPDATE " .  $this->table_name . "
-            SET status = 1
-            WHERE token = '{$token}' AND to_wallet_address = '{$wallet_address}' AND transaction_type = '{$transaction_type}'";
-
+            if($transaction_type == "withdrawal"){
+                $query = "UPDATE " .  $this->table_name . "
+                SET status = 1
+                WHERE token = '{$token}' AND from_wallet_address = '{$wallet_address}' AND transaction_type = '{$transaction_type}'";
+            }else{
+                $query = "UPDATE " .  $this->table_name . "
+                SET status = 1
+                WHERE token = '{$token}' AND to_wallet_address = '{$wallet_address}' AND transaction_type = '{$transaction_type}'";
+            }
+        
             $stmt = $this->conn->prepare($query);
 
             if($stmt->execute()){
