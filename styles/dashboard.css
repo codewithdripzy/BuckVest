@@ -75,16 +75,16 @@ a {
 /* dashboard navigation styling */
 .nav {
     position       : fixed;
-    display        : flex;
-    align-items    : center;
+    display        : block;
+    /* align-items    : center; */
     justify-content: space-between;
     background     : linear-gradient(30deg, #880fc4, #1d39f2);
-    padding        : 14px 2%;
+    padding        : 10px 0px;
     top            : 0;
     left           : 0;
-    right          : 0;
     overflow       : hidden;
     z-index        : 999;
+    width: 100vw;
 }
 
 
@@ -125,14 +125,10 @@ a {
     color      : #fff;
 }
 
-.logo {
-    display    : flex;
-    align-items: center;
-}
-
 .logo img {
-    width : 45px;
-    height: 45px;
+    width : 170px;
+    padding: 5px 20px;
+    margin-top: 5px;
 }
 
 .logoTxt {
@@ -242,11 +238,11 @@ a {
 }
 
 .sidebar-profile-pix {
-    width        : 30px;
-    height       : 30px;
+    width        : 40px;
+    height       : 40px;
     object-fit   : cover;
     border-radius: 100px;
-    padding      : 5px;
+    padding      : 2px;
     border       : 2px solid #880fc4;
 }
 

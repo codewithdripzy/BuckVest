@@ -76,10 +76,10 @@
                 return $flags;
             }
             else if($_REQUEST['request_type'] == 'delete_transaction'){
+                $transaction->getTransactionByType($_REQUEST['wallet_address'], $_REQUEST['token'], $_REQUEST['transaction_type']);
                 if(isset($_REQUEST['transaction_type']) && !empty($_REQUEST['transaction_type'])){
                     if(isset($_REQUEST['token']) && !empty($_REQUEST['token'])){
-                        $transaction->getTransactionByType($_REQUEST['wallet_address'], $_REQUEST['token']);
-                        print_r($transaction->to_wallet_address);
+                        
                         if($wallet->deductAmount($transaction->to_wallet_address, $transaction->amount)){
                             if($transaction->deleteTransaction($_REQUEST['token'], $_REQUEST['wallet_address'], $_REQUEST['transaction_type'])){
                                 $flags['state'] = true;
@@ -89,6 +89,7 @@
                                 $flags['msg'] = 'Something went wrong! it is not your fault.';
                             }
                         }else{
+                            $flags['msg'] = $transaction->to_wallet_address;
                             $flags['state'] = false;
                             $flags['msg'] = 'Something went wrong while deleting this record!';
                         }

@@ -233,10 +233,10 @@
             return false;
         }
         
-        function getTransactionByType($to_wallet_address, $token){
-            $query = "SELECT * FROM " .  $this->table_name . "
+        function getTransactionByType($to_wallet_address, $token, $transaction_type){
+            $query = "SELECT * FROM " . $this->table_name . "
             WHERE to_wallet_address = '{$to_wallet_address}' AND token = '{$token}'
-            AND transaction_type = 'deposit'
+            AND transaction_type = '{$transaction_type}'
             ORDER BY created ASC";
 
             $stmt = $this->conn->prepare($query);

@@ -140,10 +140,10 @@ window.addEventListener("load", ()=>{
         sidebar_email.innerText = sessionStorage.getItem("email");
     }
 
-    let referral_url = "http://localhost/ElonBTC/";
+    let referral_url = "http://buckvest.com/";
 
-    refferal_link.innerText = referral_url + "referral?user=" + sessionStorage.getItem("email");
-    wallet_address.innerText = sessionStorage.getItem("wallet_address").slice(0, 20) + "...";
+    // refferal_link.innerText = referral_url + "referral?user=" + sessionStorage.getItem("email");
+    wallet_address.innerText = sessionStorage.getItem("wallet_address").slice(0, 35) + "...";
 })
 
 function fetchData(params){
