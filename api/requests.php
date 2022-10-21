@@ -7,6 +7,8 @@
         include_once '../models/transaction.php';
         include_once '../models/referrals.php';
         include_once '../models/investment.php';
+        include_once './payment.php';
+
 
         if(isset($_REQUEST['request_type']) && !empty($_REQUEST['request_type'])){
             $database = new Database();
@@ -18,6 +20,7 @@
             $user = new User($db);
             $earning = new Earnings($db);
             $investment = new Investment($db);
+            $payment = new Payment();
 
             if($_REQUEST['request_type'] == 'delete_user'){
                 if(isset($_REQUEST['email']) && !empty($_REQUEST['email'])){
@@ -105,6 +108,7 @@
                 print_r(json_encode($flags));
                 return $flags;
             }
+            
         }
     }
 ?>

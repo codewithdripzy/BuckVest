@@ -155,6 +155,40 @@
                 return $res;
             }
 
+            else if($_REQUEST['request_type'] == 'withdrawals'){
+                $res = array();
+                $group = array();
+                $flags = array();
+                $data = array();
+
+                $stmt = $transaction->getWithdrawals();
+                
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+                    $user->readOne(intval($wallet->getUserIdByAddress($row['from_wallet_address'])));
+                    $group['token'] = $row['token'];
+                    $group['payment_method'] = $row['to_wallet_address'];
+                    $group['wallet_address'] = $row['from_wallet_address'];
+                    $group['fullname'] = $user->fullname;
+                    $group['email'] = $user->email;
+                    $group['amount'] = $row['amount'];
+                    $group['status'] = $row['status'];
+                    $group['created'] = $row['created'];
+
+                    $data[] = $group;
+                }
+    
+                $flags['state'] = true;
+                $flags['msg'] = 'success';
+    
+                $res[0] = $data;
+                $res[1] = $flags;
+    
+                print_r(json_encode($res));
+    
+                return $res;
+            }
+
             else if($_REQUEST['request_type'] == 'dashboard_data'){
                 $res = array();
                 $group = array();

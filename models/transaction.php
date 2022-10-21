@@ -127,7 +127,18 @@
 
         function readOtherTransactionBlocksByType(){
             $query = "SELECT * FROM " .  $this->table_name . "
-             WHERE transaction_type = 'Transfer'
+             WHERE transaction_type = 'transfer'
+             ORDER BY created ASC";
+
+            $stmt = $this->conn->prepare($query);
+
+            $stmt->execute();
+            return $stmt;
+        }
+
+        function getWithdrawals(){
+            $query = "SELECT * FROM " .  $this->table_name . "
+             WHERE transaction_type = 'withdrawal'
              ORDER BY created ASC";
 
             $stmt = $this->conn->prepare($query);
@@ -154,11 +165,30 @@
             $stmt = $this->conn->prepare($query);
 
             if($stmt->execute()){
+                $this->readOne($token, $wallet_address, $transaction_type);
                 return true;
             }
             return false;
         }
 
+        function readOne($token, $wallet_address, $transaction_type){
+            $query = "SELECT * FROM " .  $this->table_name . "
+                WHERE token = '{$token}' AND to_wallet_address = '{$wallet_address}' AND
+                transaction_type = '{$transaction_type}'
+                LIMIT 0,1";
+                
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                $this->amount = $row['amount'];
+                return true;
+            }
+            return false;
+        }
+        
         function readOneTransactionBlock($transaction_id){
             $query = "SELECT * FROM " .  $this->table_name . "
             WHERE id = '{$transaction_id}'
