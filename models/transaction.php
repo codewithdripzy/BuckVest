@@ -95,7 +95,24 @@
             $stmt->execute();
             return $stmt;
         }
-        
+
+        function readUserTransaction($wallet_address, $transaction_type){
+            if($transaction_type == 'deposit'){
+                $query = "SELECT * FROM " .  $this->table_name . "
+                 WHERE to_wallet_address = '{$wallet_address}'
+                 AND transaction_type = 'deposit'
+                ORDER BY created ASC";
+            }else{
+                $query = "SELECT * FROM " .  $this->table_name . "
+                WHERE from_wallet_address = '{$wallet_address}'
+                AND transaction_type = '{$transaction_type}'
+                ORDER BY created ASC";
+            }
+            $stmt = $this->conn->prepare($query);
+
+            $stmt->execute();
+            return $stmt;
+        }
 
         function readTransactionBlocksByType($type){
             $query = "SELECT * FROM " .  $this->table_name . "

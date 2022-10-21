@@ -29,7 +29,6 @@ window.addEventListener("load", ()=>{
             sessionStorage.setItem('created', res.created);
             sessionStorage.setItem('status', res.status);
         }else{
-            // showAlert('alert-danger', res.message);
             alert("Somethig went wrong! Try again.")
         }
     });
@@ -55,7 +54,7 @@ window.addEventListener("load", ()=>{
             earnings.innerText = '$' + total_earnings;
         }else{
             // showAlert('alert-danger', res.message);
-            alert("Somethig went wrong! Try again.")
+            alert("Something went wrong! Try again.")
         }
     });
 
@@ -75,11 +74,62 @@ window.addEventListener("load", ()=>{
             for(let i = 0; i < res[0].length; i++){
                 bonus += parseInt(res[0][i].bonus);
             }
-            // console.log(bonus);
             referral_bonus.innerText = '$' + bonus;
         }else{
-            // showAlert('alert-danger', res.message);
-            alert("Somethig went wrong! Try again.")
+            alert("Something went wrong! Try again.")
+        }
+    });
+
+    // deposit-table
+    fetch("./api/fetch.php?request_type=get_transaction&user_id=" + sessionStorage.getItem('id') + "&transaction_type=deposit", {
+        method : "POST",
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: { 'Content-type': 'application/json' }
+    })
+    .then(res =>{
+        return res.json();
+    })
+    .then(res =>{
+        let table = document.getElementById("deposit-table");
+
+        if(res[1].state){
+            for(let i = 0; i < res[0].length; i++){
+                table.innerHTML += `<tr ${i == 0 ? `class="active-row"` : ""}>
+                    <td>${res[0][i].token}</td>
+                    <td>${res[0][i].amount}</td>
+                    <td>${res[0][i].status == 0 ? "<i>Pending...</i>" : "Verified"}</td>
+                    <td>${res[0][i].created}</td>
+                </tr>`;
+            }
+        }else{
+            alert("Something went wrong! Try again.")
+        }
+    });
+
+    fetch("./api/fetch.php?request_type=get_transaction&user_id=" + sessionStorage.getItem('id') + "&transaction_type=withdrawal", {
+        method : "POST",
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: { 'Content-type': 'application/json' }
+    })
+    .then(res =>{
+        return res.json();
+    })
+    .then(res =>{
+        let table = document.getElementById("widthdrawal-table");
+
+        if(res[1].state){
+            for(let i = 0; i < res[0].length; i++){
+                table.innerHTML += `<tr ${i == 0 ? `class="active-row"` : ""}>
+                    <td>${res[0][i].token}</td>
+                    <td>${res[0][i].amount}</td>
+                    <td>${res[0][i].status == 0 ? "<i>Pending...</i>" : "Verified"}</td>
+                    <td>${res[0][i].created}</td>
+                </tr>`;
+            }
+        }else{
+            alert("Something went wrong! Try again.")
         }
     });
 
@@ -94,7 +144,6 @@ window.addEventListener("load", ()=>{
         return res.json();
     })
     .then(res =>{
-        console.log(res);
         if(res[1].state){
             let list  = document.getElementById('my-referrals');
 
@@ -108,9 +157,9 @@ window.addEventListener("load", ()=>{
                 name_row.innerText = res[0][i].fullname;
 
                 if(res[0][i].status == 0){
-                    status_row.innerText = 'verified';
-                }else{
                     status_row.innerText = 'not verified';
+                }else{
+                    status_row.innerText = 'verified';
                 }
 
                 created_row.innerText = res[0][i].created;
@@ -122,10 +171,10 @@ window.addEventListener("load", ()=>{
                 list.appendChild(tr);
             }
             // console.log(bonus);
-            referral_bonus.innerText = '$' + bonus;
+            // referral_bonus.innerText = '$' + bonus;
         }else{
             // showAlert('alert-danger', res.message);
-            alert("Somethig went wrong! Try again.")
+            alert("Something went wrong! Try again.")
         }
     });
     // wallet_balance.innerText = "$" + fetchData({fetch : "wallet_balance", user_id : sessionStorage.getItem("id")})
