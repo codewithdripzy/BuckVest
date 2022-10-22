@@ -298,17 +298,17 @@ a {
 }
 
 .main-card_content{
-    /* border: 2px solid black; */
+    border: 2px solid black;
     /* display: ; */
     justify-content: center;
-    align-items    : center;
-    flex-wrap      : wrap;
+    /* align-items    : center; */
+    /* flex-wrap      : wrap; */
 }
 
 .main-card_container .main-card {
     width        : 330px;
     display      : inline-block;
-    background   : linear-gradient(45deg, #880fc4 0%, #1d39f2 100%);
+    /* background   : linear-gradient(45deg, #880fc4 0%, #1d39f2 100%); */
     color        : white;
     font-size    : 22px;
     margin       : 10px;

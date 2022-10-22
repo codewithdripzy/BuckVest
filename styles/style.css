@@ -108,7 +108,7 @@ main {
   border       : 2px solid #de9f21;
   border-radius: 20px;
   transition   : 0.3s ease all;
-  margin-left  : 10px;
+  /* margin-left  : 10px; */
 }
 
 .button:hover {
@@ -286,7 +286,7 @@ nav ul li a:hover:before {
 }
 
 .start_up P {
-  text-align: start;
+  /* text-align: start; */
   font-size : 21px;
   color     : #d2cfd1;
   margin    : 20px 0;
@@ -742,7 +742,7 @@ input {
   color           : #333;
   background-color: #f0f0f0;
   padding         : 0 12px 0 12px;
-  border-radius   : 18px;
+  border-radius   : 4px;
   align-items     : center;
 }
 

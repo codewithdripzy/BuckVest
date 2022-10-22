@@ -20,16 +20,14 @@
     <nav>
         <a href="index.html" class="logo">
             <img src="images/bitcoin-btc-logo.svg" alt="logo">
-            <span>ELON BTC</span>
+            <span>BuckVest</span>
         </a>
 
         <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
         <div class="navLinks">
             <ul class="list">
                 <li><a href="index.html" class="list-item"> Home </a></li>
-                <!-- <li><a href=""> Services </a></li> -->
                 <li><a href="about-us.html"> About Us </a></li>
-                <li><a href="#faq"> Faq </a></li>
                 <li><a href="contact-us.html"> Contact Us </a></li>
                 <a href="login.html" class="button">Login</a>
             </ul>
@@ -108,19 +106,21 @@
                     </div>
 
                     <div class="form-container">
-                        <form action="" action="">
+                        <form action="mail_handler.php" method="post">
                             <div class="form-input">
-                                <input type="text" placeholder="Full Name">
+                                <input type="text" name="first_name" placeholder="First name">
                                 <br>
-                                <input type="email" placeholder="Email">
+                                <input type="text" name="last_name" placeholder="Second Name">
+                                <br>
+                                <input type="email" name="email" placeholder="Email">
                             </div>
-                            <div class="form-input">
-                                <input type="text" placeholder="Subject">
-                            </div>
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Message"
+                            <!-- <div class="form-input"> -->
+                                <!-- <input type="text" name="subject" placeholder="Subject"> -->
+                            <!-- </div> -->
+                            <textarea name="message" id="" cols="30" rows="10" placeholder="Message"
                                 maxlength="150"></textarea>
+                            <input type="submit" name="submit" value="Submit" class="button"></input>
                         </form>
-                        <button type="submit" class="button">Submit</button>
                     </div>
 
                 </div>
@@ -135,7 +135,7 @@
         <div class="footer-container">
             <div class="sec flogo">
                 <img src="images/bitcoin-btc-logo.svg" width="50" alt="">
-                <h1 style="color: white;">ELON MINE</h1>
+                <h1 style="color: white;">BUCKVEST</h1>
             </div>
             <div class="sec faboutus">
                 <h2>About Us</h2>
@@ -153,14 +153,14 @@
                 <h2>Newsletter</h2>
                 <div class="input-field">
                     <input type="email" placeholder="Enter Email" required>
-                    <i class="fab fa-telegram" type="submit"></i>
+                    <button class="button" type="submit">Send <i class="fa fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
     </footer>
     <!-- =======footer end======== -->
     <div class="copyrightText">
-        <p>Copyright &copy; 2020 Elon Mine. All Rights Reserved.</p>
+        <p>Copyright &copy; 2020 BuckVest. All Rights Reserved.</p>
     </div>
 
 

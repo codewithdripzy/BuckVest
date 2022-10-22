@@ -68,7 +68,7 @@
 }
 .services .serv-content .card i{
   font-size: 50px;
-  color: #1f3dff;
+  color: #031dc2;
   transition: color 0.3s ease;
 }
 .services .serv-content .card:hover i{
@@ -162,8 +162,8 @@
 }
 
 .tech-content img {
-  width : 400px;
-  height: 400px;
+  width : 300px;
+  height: 300px;
 }
 
 .tech-content {
@@ -178,7 +178,7 @@
 .tech-desc p {
   font-size: 20px;
   padding  : 40px;
-  width    : 800px;
+  /* width    : 800px; */
 }
 
 .affilations-container {
@@ -205,8 +205,27 @@
 }
 
 
+@media screen and (max-width:500px){
+
+  .services .serv-content .card{
+    width: 100%;
+    margin: 8px;
+  }
+  
+  .tech-content{
+    display: block;
+  }
+
+  .affilations-menu{
+    overflow-x: scroll;
+  }
+}
+
 
 @media only screen and (min-width: 768px) {
+
+ 
+
   .timeline:before {
     content         : "";
     position        : absolute;
