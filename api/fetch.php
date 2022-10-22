@@ -116,9 +116,31 @@
 
             print_r(json_encode($res));
         }
-        // else if($_REQUEST['request_type'] == ''){
+        else if($_REQUEST['request_type'] == 'get_transaction'){
+            $res = array();
+            $flags = array();
+            $response = array();
 
-        // }
+            $wallet->getWalletByUser($_REQUEST['user_id']);
+            $stmt = $transaction->readUserTransaction($wallet->public_wallet_address, $_REQUEST['transaction_type']);
+
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                // $data['token'] = $row['token'];
+                // $data['amount'] = $row['amount'];
+                // $data['status'] = $row['status'];
+                // $data['created'] = $row['created'];
+
+                $response[] = $row;
+            }
+
+            $flags['state'] = true;
+            $flags['msg'] = 'success';
+
+            $res[0] = $response;
+            $res[1] = $flags;
+
+            print_r(json_encode($res));
+        }
 
     }
 ?>

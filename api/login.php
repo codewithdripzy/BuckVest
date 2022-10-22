@@ -22,6 +22,8 @@
                     $res["access_code"] = $user->access_code;
                     $res["created"] = $user->created;
                     $res["modified"] = $user->modified;
+                    
+                    $res["message"] = "Welcome Back, " . strtolower($user->fullname);
                     $res["state"] = true;
                     $response = json_encode($res);
 

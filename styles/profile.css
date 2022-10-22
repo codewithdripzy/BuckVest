@@ -3,7 +3,7 @@
     display: flex;
     column-gap: 10px;
     justify-content: center;
-    padding: 10px;
+    padding: 0px;
 }
 
 [data-tab-info] {
@@ -52,7 +52,7 @@
     width           : 300px;
     height          : auto;
     border-radius   : 20px;
-    padding         : 20px 10px;
+    padding         : 20px;
     box-shadow      : 0px 0px 5px 1px #ccc;
     /* text-align   : center; */
 }
@@ -68,8 +68,8 @@
 }
 
 .profile-info img {
-    width        : 100px;
-    height       : 100px;
+    width        : 50px;
+    height       : 50px;
     align-items  : center;
     border-radius: 50%;
     padding      : 4px;
@@ -78,6 +78,18 @@
     box-shadow   : 0px 0px 5px 1px #ccc;
 }
 
+.copy-refferal-button{
+    display: block;
+    box-shadow: 0px 0px 1px 1px  #ababab;
+    background-color: #880fc4;
+    color: #fff;
+    border: none;
+    outline: none !important;
+    padding: 12px;
+    width: 100%;
+    border-radius: 50px;
+    cursor: pointer;
+}
 .profile-info h1 {
     font-size  : large;
     font-weight: 600;

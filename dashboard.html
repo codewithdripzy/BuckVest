@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="stylesheet" href="styles/cards.css">
     <link rel="stylesheet" href="styles/profile.css">
-    <link rel="shortcut icon" href="./images/bitcoin-btc-logo.svg" type="image/x-icon">
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
@@ -22,7 +21,7 @@
     <link rel="stylesheet" href="styles/dataTables.jqueryui.min.css">
     <link rel="stylesheet" href="styles/responsive.dataTables.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" /> -->
-    <link rel="shortcut icon" href="./images/bitcoin-btc-logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -30,8 +29,7 @@
     <!-- ==========Top Navigation======= -->
     <div class="nav">
         <a class="logo" href="dashboard.html">
-            <img src="images/bitcoin-btc-logo.svg" alt="">
-            <span class="logoTxt">ElonBTC</span>
+            <img src="images/logo.png" alt="BuckVest Logo">
         </a>
         <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
     </div>
@@ -157,14 +155,15 @@
                     <div class="tabs__tab active" id="tab_1" data-tab-info>
                         <div class="profile-info">
                             <div class="profile-info-content">
-                                <img src="images/avatar.png" alt="avatar">
+                                <!-- <img src="images/avatar.png" alt="avatar"> -->
                                 <h1 id="profile_username"><i class="fa fa-user"></i></h1>
                                 <span class="user_email"><i class="fa fa-at"></i></span>
                                 <a onclick="CopyReferralLink(this)" id="refferalLink"></a>
                                 <div class="wallet_info">
-                                    <span class="wallet-address-label">Wallet address <i class="fa fa-copy"></i></span>
+                                    <span class="wallet-address-label">Wallet address</span>
                                     <span id="wallet-address-text" onclick="copyWalletAddress(this)"></span>
                                 </div>
+                                <button type="button" onclick="CopyReferralLink(this)" class="copy-refferal-button">Copy Referral Link</button>
                             </div>
                         </div>
                     </div>
@@ -246,44 +245,12 @@
                     <table id="example1" class="display styled-table" style="width: 100%;">
                         <thead>
                             <th>Reference No</th>
-                            <th>Package</th>
                             <th>Amount</th>
                             <th>Status</th>
                             <th>Date</th>
                         </thead>
 
-                        <tbody>
-                            <tr class="active-row">
-                                <td>11002093</td>
-                                <td>Basic</td>
-                                <td>$50</td>
-                                <td>Pending</td>
-                                <td>2022-07-12 11:07am</td>
-                            </tr>
-
-                            <tr class="">
-                                <td>11002093</td>
-                                <td>Basic</td>
-                                <td>$50</td>
-                                <td>Pending</td>
-                                <td>2022-07-12 11:07am</td>
-                            </tr>
-
-                            <tr class="">
-                                <td>11002093</td>
-                                <td>Basic</td>
-                                <td>$50</td>
-                                <td>Pending</td>
-                                <td>2022-07-12 11:07am</td>
-                            </tr>
-
-                            <tr class="">
-                                <td>11002093</td>
-                                <td>Basic</td>
-                                <td>$50</td>
-                                <td>Pending</td>
-                                <td>2022-07-12 11:07am</td>
-                            </tr>
+                        <tbody id="deposit-table">
                         </tbody>
 
                     </table>
@@ -301,44 +268,12 @@
                     <table id="example2" class="display styled-table" style="width: 100%;">
                         <thead>
                             <th>Reference No</th>
-                            <th>Package</th>
                             <th>Amount</th>
                             <th>Status</th>
                             <th>Date</th>
                         </thead>
 
-                        <tbody>
-                            <tr class="active-row">
-                                <td>11002091</td>
-                                <td>Basic</td>
-                                <td>$50</td>
-                                <td>Pending</td>
-                                <td>2022-07-12 11:07am</td>
-                            </tr>
-
-                            <tr class="">
-                                <td>11002092</td>
-                                <td>Basic</td>
-                                <td>$50</td>
-                                <td>Pending</td>
-                                <td>2022-07-12 11:07am</td>
-                            </tr>
-
-                            <tr class="">
-                                <td>11002093</td>
-                                <td>Basic</td>
-                                <td>$50</td>
-                                <td>Pending</td>
-                                <td>2022-07-12 11:07am</td>
-                            </tr>
-
-                            <tr class="">
-                                <td>11002094</td>
-                                <td>Basic</td>
-                                <td>$50</td>
-                                <td>Pending</td>
-                                <td>2022-07-12 11:07am</td>
-                            </tr>
+                        <tbody id="widthdrawal-table">
                         </tbody>
 
                     </table>
