@@ -51,3 +51,106 @@
     background-color: #fff;
     background-position: center;
   }
+
+.blockchain-deposit-modal{
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-left: -12.5%;
+  width: 25%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 1px 0.5px #ababab;
+  z-index: 105;
+  display: block;
+  text-align: center;
+  border-radius: 20px;
+  display: none;
+}
+.blockchain-deposit-modal img{
+  width: 200px;
+  padding: 10px;
+}
+.deposit-modal-bg{
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  display: none;
+}
+.header-txt{
+  font-size: large;
+  font-weight: bold;
+  display: block;
+  padding: 10px 5px 5px;
+  text-align: center;
+}
+.description-txt{
+  display: block;  
+  text-align: center;
+  font-size: small;
+  padding: 0px 5px;
+}
+#wallet-address-input{
+  margin-top: 10px;
+}
+.input-container, .dep-container{
+  padding: 10px 0px;
+  width: 100%;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.dep-container button{
+  padding: 10px;
+  width: 100%;
+  border-radius: 50px;
+  margin: 5px 0px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.dep-container button:hover{
+  transition: 0.3s ease;
+  /* background-color: ; */
+}
+.deposit-opt-one{
+  margin-top: 20px;
+}
+
+.input-container:first-child{
+  margin-top: 50px;
+}
+.input-container input{
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  outline: none !important;
+  width: 100%;
+  transition: 0.3s ease all;
+}
+
+.input-container input:focus{
+  border: 1px solid dodgerblue;
+  background-color: white;
+  transition: 0.3s ease all;
+}
+
+.input-container button{
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #3c89f5;
+  border: none;
+  outline: none !important;
+  width: 100%;
+  color: #fff;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+.input-container button:hover{
+  background-color: #2161bf;
+}
