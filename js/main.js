@@ -242,8 +242,20 @@ function verifyUSDTPayment(){
     if(usdt_container.value == null || usdt_container.value == "" ||  usdt_container.value == undefined){
         alert("Unable to verify payment! Enter the wallet address you used to transfer the USDT so we can verify your payment!");
     }else{
-        usdt_propcontainer.style.display = "none";
-        usdt_verified.style.display = "block";
+
+        fetch("./api/requests.php?request_type=deposits&user_id=" + sessionStorage.getItem('id'), {
+            method : "POST",
+            mode: 'no-cors',
+            cache: 'no-cache',
+            headers: { 'Content-type': 'application/json' }
+        })
+        .then(res =>{
+            return res.json();
+        })
+        .then(res =>{
+            usdt_propcontainer.style.display = "none";
+            usdt_verified.style.display = "block";
+        });
     }
 }
 
