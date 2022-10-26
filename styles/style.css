@@ -41,7 +41,7 @@ body {
   transition     : 0.3s ease;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -100,15 +100,15 @@ main {
 
 /* General button style */
 .button {
-  padding      : 8px 15px;
-  background   : transparent;
-  color        : #de9f21;
-  cursor       : pointer;
-  outline      : none;
-  border       : 2px solid #de9f21;
-  border-radius: 20px;
-  transition   : 0.3s ease all;
-  margin-left  : 10px;
+  padding         : 8px 15px;
+  background      : transparent;
+  color           : #de9f21;
+  cursor          : pointer;
+  outline         : none;
+  border          : 2px solid #de9f21;
+  border-radius   : 20px;
+  transition      : 0.3s ease all;
+  /* margin-left  : 10px; */
 }
 
 .button:hover {
@@ -153,15 +153,11 @@ nav {
 }
 
 nav .logo {
-  color      : white;
-  font-size  : 24px;
-  font-weight: 700;
   align-items: center;
   display    : flex;
 }
 
 nav .logo img {
-  width : 45px;
   height: 45px;
 }
 
@@ -286,11 +282,11 @@ nav ul li a:hover:before {
 }
 
 .start_up P {
-  text-align: start;
-  font-size : 21px;
-  color     : #d2cfd1;
-  margin    : 20px 0;
-  width     : 80%;
+  /* text-align: start; */
+  font-size: 21px;
+  color    : #d2cfd1;
+  margin   : 20px 0;
+  width    : 80%;
 }
 
 
@@ -310,16 +306,16 @@ nav ul li a:hover:before {
 .plan-card {
   color           : white;
   background-color: rgba(255, 255, 255, 0.225);
-  width          : 300px;
-  border         : none;
-  border-radius  : 14px;
-  display        : flex;
-  justify-content: center;
-  align-items    : center;
-  margin         : 6px;
-  padding-top    : 25px;
-  padding-bottom : 25px;
-  box-shadow     : rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  width           : 300px;
+  border          : none;
+  border-radius   : 14px;
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  margin          : 6px;
+  padding-top     : 25px;
+  padding-bottom  : 25px;
+  box-shadow      : rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
 .plan-card:hover {
@@ -714,6 +710,10 @@ footer p {
   align-items: center;
 }
 
+.flogo img{
+  width: 280px;
+}
+
 
 .newsletter {
   width       : calc(35% -60px);
@@ -742,7 +742,7 @@ input {
   color           : #333;
   background-color: #f0f0f0;
   padding         : 0 12px 0 12px;
-  border-radius   : 18px;
+  border-radius   : 4px;
   align-items     : center;
 }
 

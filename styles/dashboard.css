@@ -75,13 +75,12 @@ a {
 /* dashboard navigation styling */
 .nav {
     position       : fixed;
-    display        : block;
-    /* align-items    : center; */
+    display        : flex;
+    flex-direction: row;
+    align-items    : center;
     justify-content: space-between;
     background     : linear-gradient(30deg, #880fc4, #1d39f2);
-    padding        : 10px 0px;
-    top            : 0;
-    left           : 0;
+    padding        : 10px 8px 10px 0;
     overflow       : hidden;
     z-index        : 100;
     width: 100vw;
@@ -285,17 +284,17 @@ a {
 .sidebar-buttons span {}
 
 .main-card_container {
-    /* display        : flex; */
-    /* flex-direction : row; */
-    /* width          : 100%; */
-    /* flex-direction : row; */
-    /* justify-content: center; */
+    display        : flex;
+    flex-direction : row;
+    width          : 100%;
+    flex-direction : row;
+    justify-content: center;
     padding        : 15px 10px;
 }
 
 .main-card_content{
     /* border: 2px solid black; */
-    /* display: ; */
+    display: flex;
     justify-content: center;
     align-items    : center;
     flex-wrap      : wrap;
@@ -303,7 +302,6 @@ a {
 
 .main-card_container .main-card {
     width        : 330px;
-    display      : inline-block;
     background   : linear-gradient(45deg, #880fc4 0%, #1d39f2 100%);
     color        : white;
     font-size    : 22px;

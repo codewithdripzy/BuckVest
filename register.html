@@ -12,15 +12,15 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="styles/register.css">
     <link rel="stylesheet" href="styles/alerts.css">
-    <link rel="shortcut icon" href="./images/bitcoin-btc-logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
 </head>
 
 <body>
     <nav>
-            <a href="index.html" class="logo">
-            <img src="images/bitcoin-btc-logo.svg" alt="logo">
-            <span>ELON BTC</span>
-            </a>
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="logo">
+            <span>BuckVest</span>
+        </a>
         </div>
 
         <span class="hamburger" id="hamburger"><i class="fas fa-bars"></i></span>
@@ -28,7 +28,6 @@
             <ul>
                 <li><a href="index.html"> Home </a></li>
                 <li><a href="about-us.html"> About Us </a></li>
-                <li><a href="#faq"> Faq </a></li>
                 <li><a href="contact-us.html"> Contact Us </a></li>
                 <a href="login.html" class="button">Login</a>
             </ul>
@@ -80,15 +79,19 @@
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Password" id="rgstpsw" autocomplete="on" oninput="checkPasswordLength()" required>
+                                <input type="password" placeholder="Password" id="rgstpsw" autocomplete="on"
+                                    oninput="checkPasswordLength()" required>
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Confirm Password" id="confirmpsw"  autocomplete="off" oninput="validatePassword()" required>
+                                <input type="password" placeholder="Confirm Password" id="confirmpsw" autocomplete="off"
+                                    oninput="validatePassword()" required>
                             </div>
                             <button type="button" class="btn" onclick="SignUp()">Create Account</button>
                         </form>
-                        <div class="other-links"><p>Already have an account?<a href="login.html">Sign in</a></p></div>
+                        <div class="other-links">
+                            <p>Already have an account?<a href="login.html">Sign in</a></p>
+                        </div>
 
                     </div>
                 </div>

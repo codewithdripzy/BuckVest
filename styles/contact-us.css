@@ -35,18 +35,21 @@
 }
 
 .contact-card-container {
+    width: 100%;
     display        : flex;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 .contact-card {
-    background        : rgba(255, 255, 255, 0.332);
+    background-color       : rgba(255, 255, 255, 0.332);
     color             : rgb(214, 214, 214);
     height            : 250px;
     width             : 350px;
-    padding           : 30px 4%;
-    margin            : 20px;
-    display           : flex;
+    padding           : 30px;
+    margin            : 8px;
+    /* display           : flex; */
     border-radius     : 12px;
     transition        : .3s ease;
 }
@@ -71,6 +74,7 @@
 
 .contact-form-container .contact-form .contact-form-title {
     text-align: center;
+    color: #ffffff;
 }
 
 .contact-form {
@@ -117,7 +121,7 @@
 
 @Media screen and (max-width:578px) {
     .contact-card-container {
-        display: block;
+        /* display: block; */
     }
 
     .form-container input,

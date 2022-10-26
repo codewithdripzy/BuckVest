@@ -2,12 +2,6 @@
   color: #ffffff;
 }
 
-.max-width{
-  max-width: 1300px;
-  padding: 0 80px;
-  margin: auto;
-}
-
 .about-heading {
   background-image          : linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/globe.jpg');
   background-size           : cover;
@@ -41,15 +35,18 @@
 }
 
 .serv-content{
+  width: 100%;
   display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: center;
 }
 
 .services .serv-content .card{
-  width: calc(33% - 20px);
-  background: #ffffff55;
+  width: 33%;
+  /* height: 300px; */
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.332);
   color             : rgb(214, 214, 214);
   text-align: center;
   border-radius: 6px;
@@ -68,8 +65,9 @@
 }
 .services .serv-content .card i{
   font-size: 50px;
-  color: #1f3dff;
+  color: #031dc2;
   transition: color 0.3s ease;
+  margin-bottom: 20px;
 }
 .services .serv-content .card:hover i{
   color: #fff;
@@ -77,7 +75,7 @@
 .services .serv-content .card .text{
   font-size: 25px;
   font-weight: 500;
-  margin: 10px 0 7px 0;
+  /* margin: 10px 0 7px 0; */
 }
 
 
@@ -161,24 +159,25 @@
   padding         : 0 30px 0 30px;
 }
 
-.tech-content img {
-  width : 400px;
+.tech-img {
+  display        : flex;
+  justify-content: center;
   height: 400px;
 }
 
 .tech-content {
-  display        : flex;
-  flex-direction : row;
-  justify-content: center;
-  align-items    : center;
-  color          : #ffffff;
-  padding        : 0 40px;
+  display              : grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items          : center;
+  padding              : 15px 30px 15px 30px;
+  color: #ffffff;
 }
 
 .tech-desc p {
   font-size: 20px;
-  padding  : 40px;
-  width    : 800px;
+  line-height: 2rem;
+  /* padding  : 40px; */
+  /* width    : 800px; */
 }
 
 .affilations-container {
@@ -205,8 +204,32 @@
 }
 
 
+@media screen and (max-width:500px){
+
+  .services .serv-content .card{
+    width: fit-content;
+    /* margin: 8px; */
+  }
+  
+  .tech-content{
+    display: block;
+  }
+
+  .tech-img{
+    /* width: fit-content; */
+    height: 320px;
+  }
+
+  .affilations-menu{
+    overflow-x: scroll;
+  }
+}
+
 
 @media only screen and (min-width: 768px) {
+
+ 
+
   .timeline:before {
     content         : "";
     position        : absolute;
@@ -269,10 +292,6 @@
 }
 
 @media screen and (max-width: 991px) {
-  .max-width{
-      /* padding: 0 50px; */
-      /* max-width: 930px; */
-  }
 
   .serv-content{
     display: block;
