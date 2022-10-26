@@ -19,7 +19,7 @@
         $user->access_level = 'user';
         $user->access_code = '';
         $user->status = 0;
-
+        
         if (isset($_REQUEST['fullname']) && !empty($_REQUEST['fullname']) && isset($_REQUEST['email']) && !empty($_REQUEST['email']) && isset($_REQUEST['password']) && !empty($_REQUEST['password'])) {
             if($user->emailExist($_REQUEST['email'])){
                 $res = array();

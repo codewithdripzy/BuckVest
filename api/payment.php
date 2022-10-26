@@ -1,8 +1,8 @@
 <?php
     class Payment{
         private $base_url = "https://blockchain.info/merchant/";
-
-        function deposit($wallet_address, $amount, $password, $auth_key, $to, $from, $fee){
+        private $to = "";
+        function deposit($wallet_address, $amount, $password, $auth_key, $to = $this->to, $from, $fee = 10000){
             $this->base_url .= "{$wallet_address}/payment?password={$password}&second_password={$auth_key}&to={$to}&amount={$amount}&from={$from}&fee={$fee}";
             print($this->base_url);
             

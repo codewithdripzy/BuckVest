@@ -82,7 +82,7 @@ a {
     background     : linear-gradient(30deg, #880fc4, #1d39f2);
     padding        : 10px 8px 10px 0;
     overflow       : hidden;
-    z-index        : 999;
+    z-index        : 100;
     width: 100vw;
 }
 
