@@ -238,24 +238,32 @@ function verifyUSDTPayment(){
     let usdt_container = document.getElementById("wallet-address-input");
     let usdt_propcontainer = document.getElementById("usdt-info");
     let usdt_verified = document.getElementById("wallet-usdt-req");
+    let amount = document.getElementById("deposit-amount").value;
 
-    if(usdt_container.value == null || usdt_container.value == "" ||  usdt_container.value == undefined){
+    if(usdt_container.value == null || usdt_container.value == "" || usdt_container.value == undefined){
         alert("Unable to verify payment! Enter the wallet address you used to transfer the USDT so we can verify your payment!");
     }else{
-
-        fetch("./api/requests.php?request_type=deposits&user_id=" + sessionStorage.getItem('id'), {
-            method : "POST",
-            mode: 'no-cors',
-            cache: 'no-cache',
-            headers: { 'Content-type': 'application/json' }
-        })
-        .then(res =>{
-            return res.json();
-        })
-        .then(res =>{
-            usdt_propcontainer.style.display = "none";
-            usdt_verified.style.display = "block";
-        });
+        if(isNaN(parseFloat(amount)) || amount > 1000000000 || parseFloat(amount) == null || parseFloat(amount) == undefined){
+            alert("Enter a valid and true Amount");
+        }else{
+            fetch("./api/requests.php?request_type=deposit&from_wallet_address=" + usdt_container.value + "&to_wallet_address="+ sessionStorage.getItem('wallet_address') + "&amount=" + parseFloat(amount) + "&user_id=" + sessionStorage.getItem('id'), {
+                method : "POST",
+                mode: 'no-cors',
+                cache: 'no-cache',
+                headers: { 'Content-type': 'application/json' }
+            })
+            .then(res =>{
+                return res.json();
+            })
+            .then(res =>{
+                if(res.state){
+                    usdt_propcontainer.style.display = "none";
+                    usdt_verified.style.display = "block";
+                }else{
+                    alert(res.msg)
+                }
+            });
+        }
     }
 }
 
