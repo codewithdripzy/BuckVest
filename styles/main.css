@@ -205,7 +205,7 @@
 }
 
 
-.btc-deposit-modal{
+/* .btc-deposit-modal{
   position: fixed;
   top: 20%;
   left: 50%;
@@ -219,9 +219,9 @@
   text-align: center;
   border-radius: 20px;
   display: none;
-}
+} */
 
-.btc-deposit-modal img{
+.modal-content-payment img{
   width: 100px;
 }
 
@@ -327,4 +327,10 @@
 
 .marg{
   margin-top: 10px;
+}
+
+
+.modal-content-payment {
+  text-align: center !important;
+  position  : relative;
 }

@@ -1,9 +1,12 @@
 .profile-tab {
-    margin: 20px 0px 0px 20px;
+    /* margin: 20px 0px 0px 20px; */
     display: flex;
+    flex-wrap: wrap;
     column-gap: 10px;
     justify-content: center;
+    align-items: center;
     padding: 0px;
+    /* border: 2px solid black; */
 }
 
 [data-tab-info] {
@@ -15,6 +18,7 @@
 }
 
 .tab-content {
+    margin: 12px;
     font-size  : 30px;
     font-family: sans-serif;
     font-weight: bold;
@@ -159,4 +163,14 @@ form {
     border-radius: 10px;
     border: 1px solid #ccc;
     padding: 10px;
+}
+
+@media screen and (max-width:568px){
+    /* .profile-info{
+        display: flex;
+        flex-direction: column;
+    }
+    .tab-content{
+        display: block !important;
+    } */
 }

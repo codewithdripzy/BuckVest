@@ -83,7 +83,6 @@
                     Dashboard
                 </div>
                 <div class="top-btn">
-                    <a href="#" class="top-btn1">Investments</a>
                     <a href="#ex1" rel="modal:open" class="top-btn2">Withdrawal</a>
                 </div>
             </div>
@@ -163,11 +162,12 @@
                                     <span class="wallet-address-label">Wallet address</span>
                                     <span id="wallet-address-text" onclick="copyWalletAddress(this)"></span>
                                 </div>
-                                <button type="button" onclick="CopyReferralLink(this)" class="copy-refferal-button">Copy Referral Link</button>
+                                <button type="button" onclick="CopyReferralLink(this)" class="copy-refferal-button">Copy
+                                    Referral Link</button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="tabs__tab" id="tab_3" data-tab-info>
                         <div class="security-container">
                             <h1>Change Password</h1>
@@ -184,21 +184,24 @@
                                 </div>
                                 <div class="form-field">
                                     <label for="">Confirm Password</label>
-                                    <input type="password" name="currentPassword" placeholder="Confirm Password*" required>
+                                    <input type="password" name="currentPassword" placeholder="Confirm Password*"
+                                        required>
                                 </div>
                             </form>
 
                             <button type="submit" class="button">Update</button>
                         </div>
-
                     </div>
                 </div>
+
                 <div class="transfer-cash">
                     <span>Transfer to BuckVest user</span>
                     <div class="transfer-info">
-                        <input type="text" name="wallet-address" id="transfer-wallet-address" placeholder="Enter ElonBTC user address">
+                        <input type="text" name="wallet-address" id="transfer-wallet-address"
+                            placeholder="Enter ElonBTC user address">
                         <input type="tel" name="amount" id="transfer-amount" placeholder="Enter amount">
-                        <button type="button" class="send-btn" id="transferCryptoBtn" onclick="TransferCrypto()">Send</button>
+                        <button type="button" class="send-btn" id="transferCryptoBtn"
+                            onclick="TransferCrypto()">Send</button>
                     </div>
                 </div>
             </div>
@@ -210,13 +213,13 @@
                     <div class="deposit-card">
                         <img src="images/opengraph.png" alt="Bitcoin Logo">
                         <h4>Pay using Bitcoin</h4>
-                        <button  class="deposit-btn" onclick="openModal('btc-deposit-modal'), openModal('deposit-modal-bg')">Pay with Blockchain</button>
+                        <a href="#ex2" class="payment-btn" rel="modal:open">Pay with Bitcoin</a>
                     </div>
 
                     <div class="deposit-card">
                         <img src="images/Tether.png" alt="Tether Logo">
                         <h4>Pay using USDT</h4>
-                        <button class="deposit-btn" onclick="openModal('usdt-deposit-modal'), openModal('deposit-modal-bg')">Pay with USDT</button>
+                        <a href="#ex3" class="payment-btn" rel="modal:open">Pay with USDT</a>
                     </div>
 
                     <!-- <div class="deposit-card" style="display: block;">
@@ -299,63 +302,76 @@
 
     </div>
 
-    <!-- =====usdt payment modal==== -->
-    <div class="usdt-deposit-modal-bg" id="deposit-modal-bg" onclick="closeModal('deposit-modal-bg'), closeModal('usdt-deposit-modal')"></div>
-    <div class="usdt-deposit-modal" id="usdt-deposit-modal">
-        <div id="usdt-info">
-            <img src="images/Tether.png" alt="Tether logo">
-            <Span class="header-txt">Deposit with Tether</Span>
+    <!-- =====usdt payment jquery modal===== -->
+    <div id="ex3" class="modal bg-modal">
+        <div class="modal-content-payment">
+            <div id="usdt-info">
+                <img src="images/Tether.png" alt="Tether logo">
+                <Span class="header-txt">Deposit with Tether</Span>
 
-            <div class="wallet-address-container">
-                <span class="explain-txt">Deposit to this USDT address to load your BbuckVest Wallet</span>
-                <span>0xcf98E2777dC3B0BBd50acFEAeC...</span>
-                <button class="copy-address-btn" onclick="CopyWalletAddress('0xcf98E2777dC3B0BBd50acFEAeCaca79E166DD888')">Copy USDT Address</button>
+                <div class="wallet-address-container">
+                    <span class="explain-txt">Deposit to this USDT address to load your BbuckVest Wallet</span>
+                    <span>0xcf98E2777dC3B0BBd50acFEAeC...</span>
+                    <button class="copy-address-btn"
+                        onclick="CopyWalletAddress('0xcf98E2777dC3B0BBd50acFEAeCaca79E166DD888')">Copy USDT
+                        Address</button>
+                </div>
+                <div class="input-container">
+                    <input type="text" name="" id="wallet-address-input" placeholder="Enter Your USDT Wallet Address"
+                        required>
+                </div>
+                <div class="input-container">
+                    <button type="button" class="tether-btn" onclick="verifyUSDTPayment()">Verify My Payment</button>
+                </div>
             </div>
-            <div class="input-container">
-                <input type="text" name="" id="wallet-address-input" placeholder="Enter Your USDT Wallet Address" required>
-            </div>
-            <div class="input-container">
-                <button type="button" class="tether-btn" onclick="verifyUSDTPayment()">Verify My Payment</button>
-            </div>
-        </div>
 
-        <div id="wallet-usdt-req">
-            <img src="./images/verif-check.png" alt="Verified" class="verified-pay">
-            <span class="header-txt">Payment Requested</span>
-            <span class="verif-texrt-explain">Your payment request has gotten to our administators and would be verified as soon as possible. your wallet would be credited as soon as we verify your payment</span>
-            <div class="input-container marg">
-                <button type="button" class="tether-btn" onclick="closeModal('deposit-modal-bg'), closeModal('usdt-deposit-modal'), rel()">Ok</button>
+            <div id="wallet-usdt-req">
+                <img src="./images/verif-check.png" alt="Verified" class="verified-pay">
+                <span class="header-txt">Payment Requested</span>
+                <span class="verif-texrt-explain">Your payment request has gotten to our administators and would be
+                    verified
+                    as soon as possible. your wallet would be credited as soon as we verify your payment</span>
+                <div class="input-container marg">
+                    <button type="button" class="tether-btn"
+                        onclick="closeModal('deposit-modal-bg'), closeModal('usdt-deposit-modal'), rel()">Ok</button>
+                </div>
             </div>
         </div>
     </div>
 
 
-    <!-- =====Bitcoin payment modal===== -->
-    <div class="deposit-modal-bg" id="deposit-modal-bg" onclick="closeModal('deposit-modal-bg'), closeModal('btc-deposit-modal')"></div>
-    <div class="btc-deposit-modal" id="btc-deposit-modal">
-        <div id="btc-info">
-            <img src="images/opengraph.png" alt="Bitcoin logo">
-            <Span class="header-txt">Deposit with Bitcoin</Span>
+    <!-- ===bitcoin payment jquery modal===== -->
+    <div id="ex2" class="modal bg-modal">
+        <div class="modal-content-payment">
+            <div id="btc-info">
+                <img src="images/opengraph.png" alt="Bitcoin logo">
+                <Span class="header-txt">Deposit with Bitcoin</Span>
 
-            <div class="wallet-address-container">
-                <span class="btc-explain-txt">Deposit to this Bitcoin address to load your BuckVest Wallet</span>
-                <span>0xcf98E2777dC3B0BBd50acFEAeC...</span>
-                <button class="btc-copy-address-btn" onclick="CopyWalletAddress('0xcf98E2777dC3B0BBd50acFEAeCaca79E166DD888')">Copy Bitcoin Address</button>
+                <div class="wallet-address-container">
+                    <span class="btc-explain-txt">Deposit to this Bitcoin address to load your BuckVest Wallet</span>
+                    <span>bc1qzmedlhj7p3ljfw59ul8...</span>
+                    <button class="btc-copy-address-btn"
+                        onclick="CopyWalletAddress('bc1qzmedlhj7p3ljfw59ul8z0d4xae7xssauazucr6')">Copy Bitcoin
+                        Address</button>
+                </div>
+                <div class="input-container">
+                    <input type="text" name="" id="wallet-address-input" placeholder="Enter Your BTC Wallet Address"
+                        required>
+                </div>
+                <div class="input-container">
+                    <button type="button" class="bitcoin-btn" onclick="verifyBTCPayment()">Verify My Payment</button>
+                </div>
             </div>
-            <div class="input-container">
-                <input type="text" name="" id="wallet-address-input" placeholder="Enter Your BTC Wallet Address" required>
-            </div>
-            <div class="input-container">
-                <button type="button" class="bitcoin-btn" onclick="verifyBTCPayment()">Verify My Payment</button>
-            </div>
-        </div>
 
-        <div id="wallet-btc-req">
-            <img src="./images/verif-check.png" alt="Verified" class="verified-pay">
-            <span class="header-txt">Payment Requested</span>
-            <span class="verif-texrt-explain">Your payment request has gotten to our administators and would be verified as soon as possible. your wallet would be credited as soon as we verify your payment</span>
-            <div class="input-container marg">
-                <button type="button" class="tether-btn" onclick="closeModal('deposit-modal-bg'), closeModal('btc-deposit-modal'), rel()">Ok</button>
+            <div id="wallet-btc-req">
+                <img src="./images/verif-check.png" alt="Verified" class="verified-pay">
+                <span class="header-txt">Payment Requested</span>
+                <span class="verif-texrt-explain">Your payment request has gotten to our administators and would be
+                    verified as soon as possible. your wallet would be credited as soon as we verify your payment</span>
+                <div class="input-container marg">
+                    <button type="button" class="tether-btn"
+                        onclick="closeModal('deposit-modal-bg'), closeModal('btc-deposit-modal'), rel()">Ok</button>
+                </div>
             </div>
         </div>
     </div>
@@ -397,7 +413,7 @@
             </div>
         </form>
         
-    </div>               -->
+    </div>-->
 
     <div class="deposit-modal-bg" id="other-payment-options-bg"></div>
     <div class="blockchain-deposit-modal" id="other-payment-options">
@@ -411,21 +427,27 @@
             <input type="text" name="" id="" placeholder="Enter Your Wallet Key">
         </div> -->
         <div class="dep-container deposit-opt-one">
-            <button type="button" onclick="depositOption('')"><img src="" alt="binance-icon" class="deposit-logo"> Binance </button>
+            <button type="button" onclick="depositOption('')"><img src="" alt="binance-icon" class="deposit-logo">
+                Binance </button>
         </div>
         <div class="dep-container">
-            <button type="button" onclick="depositOption('')"><img src="" alt="Conbase-icon" class="deposit-logo"> Coinbase </button>
+            <button type="button" onclick="depositOption('')"><img src="" alt="Conbase-icon" class="deposit-logo">
+                Coinbase </button>
         </div>
         <div class="dep-container">
-            <button type="button" onclick="depositOption('')"><img src="" alt="Luno-icon" class="deposit-logo"> Luno </button>
+            <button type="button" onclick="depositOption('')"><img src="" alt="Luno-icon" class="deposit-logo"> Luno
+            </button>
         </div>
         <div class="dep-container">
-            <button type="button" onclick="depositOption('')"><img src="" alt="Trustwallet-icon" class="deposit-logo"> Trustwallet </button>
+            <button type="button" onclick="depositOption('')"><img src="" alt="Trustwallet-icon" class="deposit-logo">
+                Trustwallet </button>
         </div>
     </div>
     <!-- <div class="input-container">
         <input type="text" name="" id="" placeholder="Enter Your Blockchain password">
     </div> -->
+
+    <!-- =====Withdrawal jquery modal======= -->
     <div id="ex1" class="modal bg-modal">
         <div class="modal-content">
             <h1>Wallet Withdrawal</h1>
@@ -452,9 +474,9 @@
                 </select>
             </div>
             <button class="button">Withdraw</button>
-            <!-- <p>Your withdrawal will processed within 15mins</p> -->
         </div>
     </div>
+
 </body>
 
 

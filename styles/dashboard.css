@@ -168,14 +168,15 @@ a {
     font-weight: 600;
 }
 
-.top-btn1 {
-    width           : 120px;
-    background-color: transparent;
-    padding         : 8px 14px;
-    color           : white;
-    border          : 2px solid #fff;
-    border-radius   : 30px;
-    cursor          : pointer;
+.payment-btn {
+    border: none;
+    color: white;
+    padding: 0px 12px;
+    background-color: #1d39f2;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
 }
 
 .top-btn2 {
