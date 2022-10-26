@@ -184,8 +184,7 @@
                                 </div>
                                 <div class="form-field">
                                     <label for="">Confirm Password</label>
-                                    <input type="password" name="currentPassword" placeholder="Confirm Password*"
-                                        required>
+                                    <input type="password" name="currentPassword" placeholder="Confirm Password*" required>
                                 </div>
                             </form>
 
@@ -195,7 +194,7 @@
                     </div>
                 </div>
                 <div class="transfer-cash">
-                    <span>Transfer to ElonBTC user</span>
+                    <span>Transfer to BuckVest user</span>
                     <div class="transfer-info">
                         <input type="text" name="wallet-address" id="transfer-wallet-address" placeholder="Enter ElonBTC user address">
                         <input type="tel" name="amount" id="transfer-amount" placeholder="Enter amount">
@@ -206,42 +205,29 @@
 
 
 
-
-            <!-- deposit section -->
             <div class="deposit-card-container" id="deposit">
-                <div class="deposit-card-header">
-                    Deposit into your Wallet
-                </div>
                 <div class="deposit-card-menu">
                     <div class="deposit-card">
-                        <img src="images/opengraph.png" alt="">
-                        <h4>Pay using Bitcoin (Blockchain gateway)</h4>
-                        <button class="deposit-btn">Pay with Blockchain</button>
+                        <img src="images/opengraph.png" alt="Bitcoin Logo">
+                        <h4>Pay using Bitcoin</h4>
+                        <button type="button" class="deposit-btn" onclick="PayWithBlockchain(1)">Pay with Blockchain</button>
                     </div>
 
                     <div class="deposit-card">
-                        <img src="images/Tether.png" alt="">
+                        <img src="images/Tether.png" alt="Tether Logo">
                         <h4>Pay using USDT</h4>
-                        <button class="deposit-btn">Pay with USDT</button>
+                        <button class="deposit-btn" onclick="openModal('usdt-deposit-modal'), openModal('deposit-modal-bg')">Pay with USDT</button>
                     </div>
 
-                    <div class="deposit-card" style="display: block;">
+                    <!-- <div class="deposit-card" style="display: block;">
                         <img src="images/paypal.png" alt="">
-                        <h4>Pay using PayPal</h4>
+                        <h4>Pay using PayPal</h4>'
                         <button class="deposit-btn">Pay with PayPal</button>
-                    </div>
-
-                    <div class="deposit-card" style="display: block;">
-                        <img src="images/paypal.png" alt="">
-                        <h4>Pay from other wallet</h4>
-                        <button class="deposit-btn" onclick="toggleWalletModal(1)">Pay from wallet</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
             <!-- deposit history section -->
-
-
             <div class="table-container">
                 <div class="table-content">
                     <div class="table-header">
@@ -313,20 +299,75 @@
 
     </div>
 
-    <div class="deposit-modal-bg"></div>
-    <div class="blockchain-deposit-modal">
-        <img src="./images/blockchain-logo-simp.png" alt="Blockchain Logo">
-        <Span class="header-txt">Deposit with Blockchain</Span>
-        <!-- <span class="description-txt">Easy and FastWay to make payment</span> -->
-        <div class="input-container">
-            <input type="text" name="" id="wallet-address-input" placeholder="Enter Your Blockchain Wallet Address">
+    <div class="usdt-deposit-modal-bg" id="deposit-modal-bg" onclick="closeModal('deposit-modal-bg'), closeModal('usdt-deposit-modal')"></div>
+    <div class="usdt-deposit-modal" id="usdt-deposit-modal">
+        <div id="usdt-info">
+            <img src="images/Tether.png" alt="Tether logo">
+            <Span class="header-txt">Deposit with Tether</Span>
+
+            <div class="wallet-address-container">
+                <span class="explain-txt">Deposit to this USDT address to load your BbuckVest Wallet</span>
+                <span>0xcf98E2777dC3B0BBd50acFEAeC...</span>
+                <button class="copy-address-btn" onclick="CopyWalletAddress('0xcf98E2777dC3B0BBd50acFEAeCaca79E166DD888')">Copy USDT Address</button>
+            </div>
+            <div class="input-container">
+                <input type="text" name="" id="wallet-address-input" placeholder="Enter Your USDT Wallet Address" required>
+            </div>
+            <div class="input-container">
+                <button type="button" class="tether-btn" onclick="verifyUSDTPayment()">Verify My Payment</button>
+            </div>
         </div>
+
+        <div id="wallet-usdt-req">
+            <img src="./images/verif-check.png" alt="Verified" class="verified-pay">
+            <span class="header-txt">Payment Requested</span>
+            <span class="verif-texrt-explain">Your payment request has gotten to our administators and would be verified as soon as possible. your wallet would be credited as soon as we verify your payment</span>
+            <div class="input-container marg">
+                <button type="button" class="tether-btn" onclick="closeModal('deposit-modal-bg'), closeModal('usdt-deposit-modal'), rel()">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="deposit-modal-bg" id="blockchain-deposit-modal-bg"></div>
+
+    <div class="blockchain-deposit-modal" id="blockchain-deposit-modal">
+        <div class="deposit-img-container">
+            <img src="./images/blockchain-logo-simp.png" alt="Blockchain Logo">
+            
+        </div>
+
+        <div id="loader"></div>
+        <form action="./api/deposit.php" method="post">
+            <div id="payment-section-one">
+                <Span class="header-txt">Deposit with Blockchain</Span>
+                <div class="input-container">
+                    <input type="text" name="" id="wallet-address-input" placeholder="Enter Your Blockchain Wallet Address" required>
+                </div>
+                <div class="input-container">
+                    <input type="text" name="" id="amount" placeholder="Enter Amount" required>
+                </div>
+                <div class="input-container">
+                    <button type="button" class="blockchain-btn" onclick="GoToOption('payment-section-one', 'payment-section-two')">Verify your Payment</button>
+                </div>
+            </div>
+
+            
+            <div id="payment-section-two">
+                <Span class="header-txt">Verify your payment</Span>
+                <div class="input-container">
+                    <input type="password" name="" id="password" placeholder="Password">
+                </div>
+                <div class="input-container">
+                    <input type="text" name="" id="amount" placeholder="Enter Amount">
+                </div>
+                <div class="input-container">
+                    <button type="button" class="blockchain-btn" onclick="depositCheckout()">Next </button>
+                </div>
+            </div>
+        </form>
         <!-- <div class="input-container">
             <input type="text" name="" id="" placeholder="Enter Your Wallet Key">
         </div> -->
-        <div class="input-container">
-            <button type="button" onclick="depositCheckout()">Next </button>
-        </div>
     </div>
 
     <div class="deposit-modal-bg" id="other-payment-options-bg"></div>

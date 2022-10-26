@@ -228,3 +228,29 @@ function CopyReferralLink(e){
     navigator.clipboard.writeText(e.innerText)
     alert("Link has been copied to clipboard!");
 }
+
+function CopyWalletAddress(e){
+    navigator.clipboard.writeText(e)
+    alert("Wallet Address has been copied to clipboard!");
+}
+
+function verifyUSDTPayment(){
+    let usdt_container = document.getElementById("wallet-address-input");
+    let usdt_propcontainer = document.getElementById("usdt-info");
+    let usdt_verified = document.getElementById("wallet-usdt-req");
+
+    if(usdt_container.value == null || usdt_container.value == "" ||  usdt_container.value == undefined){
+        alert("Unable to verify payment! Enter the wallet address you used to transfer the USDT so we can verify your payment!");
+    }else{
+        usdt_propcontainer.style.display = "none";
+        usdt_verified.style.display = "block";
+    }
+}
+
+function closeModal(modal){
+    let modal_ui = document.getElementById(modal);
+    modal_ui.style.display = "none";
+}
+function rel(){
+    location.reload();
+}

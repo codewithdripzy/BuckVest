@@ -9,8 +9,8 @@ function checkPasswordLength(){
   let psw = document.getElementById('rgstpsw');
   let alert = document.getElementById("alert");
 
-  if(psw.value.length < 8){
-    showAlert("alert-caution", "Password must not be less than 8 characthers");
+  if(psw.value.length < 10){
+    showAlert("alert-caution", "Password must not be less than 10 characthers");
   }else{
     alert.classList.remove("show");
   }
