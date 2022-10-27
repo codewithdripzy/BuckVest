@@ -203,6 +203,28 @@
 .usdt-deposit-modal img{
   width: 100px;
 }
+
+
+/* .btc-deposit-modal{
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-left: -12.5%;
+  width: 25%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 1px 0.5px #ababab;
+  z-index: 105;
+  display: block;
+  text-align: center;
+  border-radius: 20px;
+  display: none;
+} */
+
+.modal-content-payment img{
+  width: 100px;
+}
+
 .tether-btn{
   background-color: #50af95;
   padding: 10px;
@@ -215,11 +237,32 @@
   cursor: pointer;
 }
 
+.bitcoin-btn{
+  background-color: #ed9221;
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  outline: none !important;
+  width: 100%;
+  color: #fff;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+
+
 .wallet-address-container{
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 5px 10px;
 }
+
+.btc-explain-txt{
+  display: block;
+  color: #ed9221;
+  /* font-size: small; */
+  padding: 10px;
+}
+
 .explain-txt{
   display: block;
   color: #50af95;
@@ -246,10 +289,35 @@
   color: #fff;
   transition: 0.3s ease all;
 }
+
+.btc-copy-address-btn{
+  display: block;
+  width: 100%;
+  padding: 10px 0px;
+  background-color: #fff;
+  color: #ed9221;
+  /* border: 1px solid #50af95; */
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 0px 1px 0.2px #ddd;
+  margin: 10px 0px;
+  border-radius: 10px;
+  transition: 0.3s ease all;
+}
+.btc-copy-address-btn:hover{
+  background-color: #ed9221;
+  color: #fff;
+  transition: 0.3s ease all;
+}
+
 .verif-texrt-explain{
   display: block;
 }
 #wallet-usdt-req{
+  display: none;
+}
+
+#wallet-btc-req{
   display: none;
 }
 
@@ -259,4 +327,10 @@
 
 .marg{
   margin-top: 10px;
+}
+
+
+.modal-content-payment {
+  text-align: center !important;
+  position  : relative;
 }

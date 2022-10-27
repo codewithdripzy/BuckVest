@@ -267,6 +267,33 @@ function verifyUSDTPayment(){
     }
 }
 
+
+function verifyBTCPayment(){
+    let btc_container = document.getElementById("wallet-address-input");
+    let btc_propcontainer = document.getElementById("btc-info");
+    let btc_verified = document.getElementById("wallet-btc-req");
+
+    if(btc_container.value == null || btc_container.value == "" ||  btc_container.value == undefined){
+        alert("Unable to verify payment! Enter the wallet address you used to transfer the Bitcoin so we can verify your payment!");
+    }else{
+
+        fetch("./api/requests.php?request_type=deposits&user_id=" + sessionStorage.getItem('id'), {
+            method : "POST",
+            mode: 'no-cors',
+            cache: 'no-cache',
+            headers: { 'Content-type': 'application/json' }
+        })
+        .then(res =>{
+            return res.json();
+        })
+        .then(res =>{
+            btc_propcontainer.style.display = "none";
+            btc_verified.style.display = "block";
+        });
+    }
+}
+
+
 function closeModal(modal){
     let modal_ui = document.getElementById(modal);
     modal_ui.style.display = "none";
