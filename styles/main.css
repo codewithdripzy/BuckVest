@@ -321,7 +321,7 @@
   display: none;
 }
 
-#wallet-usdt-req img{
+#wallet-usdt-req img, #wallet-btc-withdrawal img{
   padding: 10px;
 }
 
