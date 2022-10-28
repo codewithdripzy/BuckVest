@@ -9,6 +9,7 @@ window.addEventListener("load", ()=>{
     let wallet_address = document.getElementById("wallet-address-text")
     let earnings = document.getElementById("earnings");
     let available_balance = document.getElementById("wallet-available-balance")
+    let email = document.getElementById("user_email");
 
     // ------------------------------- wallet balance
     fetch("./api/fetch.php?request_type=wallet_balance&user_id=" + sessionStorage.getItem('id'), {
@@ -21,9 +22,11 @@ window.addEventListener("load", ()=>{
         return res.json();
     })
     .then(res =>{
+        email.innerText = sessionStorage.getItem('email');
         wallet_balance.innerText = '$' + res.balance;
         available_balance.innerText = '$' + res.balance;
-
+        wallet_address.innerText = res.public_wallet_address.slice(0,30) + '...';
+        
         if(res.state){
             sessionStorage.setItem('wallet_address', res.public_wallet_address);
             sessionStorage.setItem('wallet_type', res.wallet_type);
@@ -32,7 +35,7 @@ window.addEventListener("load", ()=>{
             sessionStorage.setItem('created', res.created);
             sessionStorage.setItem('status', res.status);
         }else{
-            alert("Somethig went wrong! Try again.")
+            CustomAlert("Somethig went wrong! Try again.")
         }
     });
 
@@ -56,8 +59,8 @@ window.addEventListener("load", ()=>{
             }
             earnings.innerText = '$' + total_earnings;
         }else{
-            // showAlert('alert-danger', res.message);
-            alert("Something went wrong! Try again.")
+            // showAlert('CustomAlert-danger', res.message);
+            CustomAlert("Something went wrong! Try again.")
         }
     });
 
@@ -79,7 +82,7 @@ window.addEventListener("load", ()=>{
             }
             referral_bonus.innerText = '$' + bonus;
         }else{
-            alert("Something went wrong! Try again.")
+            CustomAlert("Something went wrong! Try again.")
         }
     });
 
@@ -106,7 +109,7 @@ window.addEventListener("load", ()=>{
                 </tr>`;
             }
         }else{
-            alert("Something went wrong! Try again.")
+            CustomAlert("Something went wrong! Try again.")
         }
     });
 
@@ -132,7 +135,7 @@ window.addEventListener("load", ()=>{
                 </tr>`;
             }
         }else{
-            alert("Something went wrong! Try again.")
+            CustomAlert("Something went wrong! Try again.")
         }
     });
 
@@ -176,8 +179,8 @@ window.addEventListener("load", ()=>{
             // console.log(bonus);
             // referral_bonus.innerText = '$' + bonus;
         }else{
-            // showAlert('alert-danger', res.message);
-            alert("Something went wrong! Try again.")
+            // showAlert('CustomAlert-danger', res.message);
+            CustomAlert("Something went wrong! Try again.")
         }
     });
     // wallet_balance.innerText = "$" + fetchData({fetch : "wallet_balance", user_id : sessionStorage.getItem("id")})
@@ -229,12 +232,12 @@ function setResponse(response){
 }
 function CopyReferralLink(e){
     navigator.clipboard.writeText(e.innerText)
-    alert("Link has been copied to clipboard!");
+    CustomAlert("Link has been copied to clipboard!");
 }
 
 function CopyWalletAddress(e){
     navigator.clipboard.writeText(e)
-    alert("Wallet Address has been copied to clipboard!");
+    CustomAlert("Wallet Address has been copied to clipboard!");
 }
 
 function verifyUSDTPayment(){
@@ -244,10 +247,10 @@ function verifyUSDTPayment(){
     let amount = document.getElementById("deposit-amount").value;
 
     if(usdt_container.value == null || usdt_container.value == "" || usdt_container.value == undefined){
-        alert("Unable to verify payment! Enter the wallet address you used to transfer the USDT so we can verify your payment!");
+        CustomAlert("Unable to verify payment! Enter the wallet address you used to transfer the USDT so we can verify your payment!");
     }else{
         if(isNaN(parseFloat(amount)) || amount > 1000000000 || parseFloat(amount) == null || parseFloat(amount) == undefined){
-            alert("Enter a valid and true Amount");
+            CustomAlert("Enter a valid and true Amount");
         }else{
             fetch("./api/requests.php?request_type=deposit&from_wallet_address=" + usdt_container.value + "&to_wallet_address="+ sessionStorage.getItem('wallet_address') + "&amount=" + parseFloat(amount) + "&user_id=" + sessionStorage.getItem('id'), {
                 method : "POST",
@@ -263,7 +266,7 @@ function verifyUSDTPayment(){
                     usdt_propcontainer.style.display = "none";
                     usdt_verified.style.display = "block";
                 }else{
-                    alert(res.msg)
+                    CustomAlert(res.msg)
                 }
             });
         }
@@ -278,13 +281,13 @@ function verifyBTCPayment(){
     let btc_verified = document.getElementById("wallet-btc-req");
     console.log(amount);
     if(btc_container.value == null || btc_container.value == "" ||  btc_container.value == undefined){
-        alert("Unable to verify payment! Enter the wallet address you used to transfer the Bitcoin so we can verify your payment!");
+        CustomAlert("Unable to verify payment! Enter the wallet address you used to transfer the Bitcoin so we can verify your payment!");
     }else{
         if(btc_container.value == null || btc_container.value == "" || btc_container.value == undefined){
-            alert("Unable to verify payment! Enter the wallet address you used to transfer the USDT so we can verify your payment!");
+            CustomAlert("Unable to verify payment! Enter the wallet address you used to transfer the USDT so we can verify your payment!");
         }else{
             if(isNaN(parseInt(amount)) || amount > 1000000000 || parseInt(amount) == null || parseInt(amount) == undefined){
-                alert("Enter a valid and true Amount");
+                CustomAlert("Enter a valid and true Amount");
             }else{
                 fetch("./api/requests.php?request_type=deposit&from_wallet_address=" + btc_container.value + "&to_wallet_address="+ sessionStorage.getItem('wallet_address') + "&amount=" + parseFloat(amount) + "&user_id=" + sessionStorage.getItem('id'), {
                     method : "POST",
@@ -300,7 +303,7 @@ function verifyBTCPayment(){
                         btc_propcontainer.style.display = "none";
                         btc_verified.style.display = "block";
                     }else{
-                        alert(res.msg)
+                        CustomAlert(res.msg)
                     }
                 });
             }
@@ -324,7 +327,7 @@ function togglePaymentPipeLine(){
     let paypal = document.getElementById("paypal_pipeline");
 
     if(payment_method.value == "null" || payment_method.value == undefined || payment_method.value == null || payment_method.value == ""){
-        alert("Select a valid Payment Method");
+        CustomAlert("Select a valid Payment Method");
     }else{
         if(payment_method.value == "USDT" || payment_method.value == "BTC"){
             wallet_address.style.display = "block";
@@ -347,7 +350,13 @@ function withdrawAmount(){
     let modal_cont = document.getElementById("withdrawal-cont");
 
     let payment_address;
-    console.log(payment_method.value);
+
+    function CustomAlert(msg){
+        let custom_alert = document.getElementById('custom-alert');
+        custom_alert.innerText = msg;
+        custom_alert.style.display = 'block';
+    }
+
     if(payment_method.value == "USDT" || payment_method.value == "BTC"){
         payment_address = document.getElementById("crypto_pipe");
     }else if(payment_method.value == "PP"){
@@ -357,19 +366,19 @@ function withdrawAmount(){
     }
     
     if(wallet_address == null || wallet_address == "" ||  wallet_address == undefined){
-        alert("Unable to request payment! Try Logging in again or contact the admin if this issue repeates itself");
+        CustomAlert("Unable to request payment! Try Logging in again or contact the admin if this issue repeates itself");
     }else{
         if(payment_method.value == null || payment_method.value == "" || payment_method.value == undefined){
-            alert("Unable to request payment! Choose a Payment Method!");
+            CustomAlert("Unable to request payment! Choose a Payment Method!");
         }else{
             if(payment_address.value == null || payment_address.value == "" || payment_address.value == undefined){
-                alert("Unable to request payment! Enter a valid Payment Address!");
+                CustomAlert("Unable to request payment! Enter a valid Payment Address!");
             }else{
                 if(isNaN(parseInt(amount)) || amount > 1000000000 || parseInt(amount) == null || parseInt(amount) == undefined){
-                    alert("Enter a valid and true Amount to withdraw");
+                    CustomAlert("Enter a valid and true Amount to withdraw");
                 }else{
                     if(parseInt(amount) > sessionStorage.getItem("balance")){
-                        alert("Your wallet balance is to low to withdraw this amount");
+                        CustomAlert("Your wallet balance is to low to withdraw this amount");
                     }else{
                         fetch("./api/requests.php?request_type=withdrawal&to_wallet_address=" + wallet_address + "&wallet_address="+ sessionStorage.getItem('wallet_address') + "&amount=" + parseFloat(amount) + "&user_id=" + sessionStorage.getItem('id'), {
                             method : "POST",
@@ -385,7 +394,7 @@ function withdrawAmount(){
                                 modal_cont.style.display = "none";
                                 modal.style.display = "block";
                             }else{
-                                alert(res.msg)
+                                CustomAlert(res.msg)
                             }
                         });
                     }
@@ -393,4 +402,54 @@ function withdrawAmount(){
             }
         }
     }
+}
+
+function investplan(plan){
+    console.log(plan);
+    if(plan == 'BSP' || plan == 'PRP' || plan == 'ETP'){
+        let balance = sessionStorage.getItem('balance');
+        amount = parseInt(prompt('How much would you like to Invest?'));
+
+        if(amount == null || amount == undefined || amount == '' || amount == 0){
+            CustomAlert('Invalid Amount Entered! Try again!');
+        }else{
+            if(plan == 'BSP' && balance < 50 || plan == 'PRP' && balance < 1000 || plan == 'ETP' && balance < 10000){
+                CustomAlert('Your wallet balance is too low to invest in this plan! Load your wallet and try again.');
+            }else{
+                if(plan == 'BSP' && amount > 500 || plan == 'PRP' && balance > 10000){
+                    CustomAlert('The amount you entered is to large for this plan! Try upgrading to another plan that suit you best.');
+                }else{
+                    fetch("./api/requests.php?request_type=invest&wallet_address=" + sessionStorage.getItem('wallet_address')+ "&plan=" + plan + "&user_id=" + sessionStorage.getItem('id') + "&amount=" + amount, {
+                        method : "POST",
+                        mode: 'no-cors',
+                        cache: 'no-cache',
+                        headers: { 'Content-type': 'application/json' }
+                    })
+                    .then(res =>{
+                        return res.json();
+                    })
+                    .then(res =>{
+                        if(res.state){
+                            CustomAlert(plan == 'BSP' ? 'You have sucessfully invested in basic plan!' : plan == 'PRP' ? 'You have sucessfully invested in pro plan!' : plan == 'ETP' ? 'You have sucessfully invested in Ethusiast plan!' : 'Something went wrong!');
+                            setTimeout(()=>{
+                                rel();
+                            }, 3000);
+                        }else{
+                            CustomAlert(res.msg)
+                        }
+                    });
+                }
+            }
+        }
+        
+    }else{
+        CustomAlert('Enter a valid Plan!')
+    }
+    
+}
+
+function CustomAlert(msg){
+    let custom_alert = document.getElementById('custom-alert');
+    custom_alert.innerText = msg;
+    custom_alert.style.display = 'block';
 }

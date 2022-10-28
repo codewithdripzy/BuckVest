@@ -255,6 +255,7 @@
         function calculateWithdrawals(){
             $query = "SELECT * FROM " .  $this->table_name . "
             WHERE transaction_type = 'withdrawal'
+            AND status = 1
             ORDER BY created ASC";
 
             $stmt = $this->conn->prepare($query);

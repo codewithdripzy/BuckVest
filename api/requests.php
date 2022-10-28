@@ -60,18 +60,34 @@
                 $transaction->getTransactionByType($_REQUEST['wallet_address'], $_REQUEST['token'], $_REQUEST['transaction_type']);
                 if(isset($_REQUEST['transaction_type']) && !empty($_REQUEST['transaction_type'])){
                     if(isset($_REQUEST['token']) && !empty($_REQUEST['token'])){
-                        if($wallet->addAmount($transaction->to_wallet_address, $transaction->amount)){
-                            if($transaction->verifyTransaction($_REQUEST['token'], $_REQUEST['wallet_address'], $_REQUEST['transaction_type'])){
-                                $flags['state'] = true;
-                                $flags['msg'] = 'success';
+                        if($_REQUEST['transaction_type'] == 'withdrawal'){
+                            if($wallet->deductAmount($transaction->to_wallet_address, $transaction->amount)){
+                                if($transaction->verifyTransaction($_REQUEST['token'], $_REQUEST['wallet_address'], $_REQUEST['transaction_type'])){
+                                    $flags['state'] = true;
+                                    $flags['msg'] = 'success';
+                                }else{
+                                    $flags['state'] = false;
+                                    $flags['msg'] = 'Something went wrong! it is not your fault.';
+                                }
                             }else{
                                 $flags['state'] = false;
-                                $flags['msg'] = 'Something went wrong! it is not your fault.';
+                                $flags['msg'] = 'Something went wrong while deleting this record!';
                             }
                         }else{
-                            $flags['state'] = false;
-                            $flags['msg'] = 'Something went wrong while deleting this record!';
+                            if($wallet->addAmount($transaction->to_wallet_address, $transaction->amount)){
+                                if($transaction->verifyTransaction($_REQUEST['token'], $_REQUEST['wallet_address'], $_REQUEST['transaction_type'])){
+                                    $flags['state'] = true;
+                                    $flags['msg'] = 'success';
+                                }else{
+                                    $flags['state'] = false;
+                                    $flags['msg'] = 'Something went wrong! it is not your fault.';
+                                }
+                            }else{
+                                $flags['state'] = false;
+                                $flags['msg'] = 'Something went wrong while deleting this record!';
+                            }
                         }
+                        
                     }else{
                         $flags['state'] = false;
                         $flags['msg'] = 'Something went wrong! Invalid Request';
@@ -152,7 +168,7 @@
 
                 $user->readOne($_REQUEST['user_id']);
 
-                $transaction->current_hash = HashGen::GenerateHash(array($user->fullname, rand(0,1000), $user->email, $user->created, $user->id, rand(0, 1000)));
+                $transaction->current_hash = HashGen::GenerateHash(array($user->fullname, rand(0, 1000), $user->email, $user->created, $user->id, rand(0, 1000)));
                 $transaction->amount = $_REQUEST['amount'];
                 $transaction->description = 'Withdrawal from wallet';
                 $transaction->token = md5(date("d-m-y H:I:s") . rand(0, 1000));
@@ -164,6 +180,30 @@
                     if($transaction->createBlock()){
                         $flags['state'] = true;
                         $flags['msg'] = 'success';
+                    }else{
+                        $flags['state'] = false;
+                        $flags['msg'] = 'Something went wrong! it is not your fault.';
+                    }
+                }else{
+                    $flags['state'] = false;
+                    $flags['msg'] = 'Something went wrong! Invalid Request';
+                }  
+
+                print_r(json_encode($flags));
+                return $flags;
+            }else if($_REQUEST['request_type'] == 'invest'){
+                $investment->user_id = $_REQUEST['user_id'];
+                $investment->plan = $_REQUEST['plan'];
+                
+                if(isset($_REQUEST['user_id']) && !empty($_REQUEST['user_id'])){
+                    if($investment->invest()){
+                        if($wallet->deductAmount($_REQUEST['wallet_address'], $_REQUEST['amount'])){
+                            $flags['state'] = true;
+                            $flags['msg'] = 'success';
+                        }else{
+                            $flags['state'] = false;
+                            $flags['msg'] = 'Something went wrong! it is not your fault.';
+                        }
                     }else{
                         $flags['state'] = false;
                         $flags['msg'] = 'Something went wrong! it is not your fault.';

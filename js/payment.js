@@ -34,3 +34,10 @@ function openModal(modal_i){
     let modal = document.getElementById(modal_i);
     modal.style.display = "block";
 }
+
+
+function CustomAlert(msg){
+    let custom_alert = document.getElementById('custom-alert');
+    custom_alert.innerText = msg;
+    custom_alert.style.display = 'block';
+}

@@ -68,3 +68,10 @@ function TransferCrypto(){
     TransferCryptoRequest(wallet_address, amount)
   }
 }
+
+
+function CustomAlert(msg){
+  let custom_alert = document.getElementById('custom-alert');
+  custom_alert.innerText = msg;
+  custom_alert.style.display = 'block';
+}
