@@ -405,12 +405,11 @@ function withdrawAmount(){
 }
 
 function investplan(plan){
-    console.log(plan);
     if(plan == 'BSP' || plan == 'PRP' || plan == 'ETP'){
         let balance = sessionStorage.getItem('balance');
         amount = parseInt(prompt('How much would you like to Invest?'));
-
-        if(amount == null || amount == undefined || amount == '' || amount == 0){
+        
+        if(amount == null || amount == undefined || amount == '' || amount == 0 || isNaN(amount)){
             CustomAlert('Invalid Amount Entered! Try again!');
         }else{
             if(plan == 'BSP' && balance < 50 || plan == 'PRP' && balance < 1000 || plan == 'ETP' && balance < 10000){

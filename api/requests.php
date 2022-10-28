@@ -193,7 +193,9 @@
                 return $flags;
             }else if($_REQUEST['request_type'] == 'invest'){
                 $investment->user_id = $_REQUEST['user_id'];
-                $investment->plan = $_REQUEST['plan'];
+                $investment->investment_plan = $_REQUEST['plan'];
+                $investment->amount = $_REQUEST['amount'];
+
                 
                 if(isset($_REQUEST['user_id']) && !empty($_REQUEST['user_id'])){
                     if($investment->invest()){
