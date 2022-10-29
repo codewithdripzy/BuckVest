@@ -63,7 +63,8 @@
 
         function readOne($user_id){
             $query = "SELECT * FROM " . $this->table_name . "
-             WHERE user_id = {$user_id}";
+             WHERE user_id = {$user_id}
+             LIMIT 0,1";
 
             $stmt = $this->conn->prepare($query);
 
@@ -71,7 +72,7 @@
 
             $count = $stmt->rowCount();
 
-            if($count < 0){
+            if($count > 0){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 $this->investment_plan = $row["investment_plan"];
@@ -81,6 +82,29 @@
                 return true;
             }
             return false;
+        }
+
+        function hasInvested($user_id){
+            $query = "SELECT * FROM " . $this->table_name . "
+            WHERE user_id = {$user_id}
+            LIMIT 0,1";
+
+            $stmt = $this->conn->prepare($query);
+
+            $stmt->execute();
+
+            $count = $stmt->rowCount();
+
+            if($count > 0){
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                $this->investment_plan = $row["investment_plan"];
+                $this->amount = $row["amount"];
+                $this->created = $row["created"];
+
+                return true;
+            }
+           return false;
         }
     }
 ?>

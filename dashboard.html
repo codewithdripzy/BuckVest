@@ -21,7 +21,19 @@
 </head>
 
 <body>
+    <script>
+        function redirect(url) {
+            let home_url = document.createElement('a')
 
+            home_url.hidden = true;
+            home_url.href = url;
+            document.body.appendChild(home_url);
+            home_url.click();
+        }
+        if(sessionStorage.getItem("access_level") == "admin"){
+            redirect("./admin/dashboard")
+        }
+    </script>
     <!-- ==========Top Navigation======= -->
     <div class="nav">
         <a class="logo" href="dashboard.html">
@@ -50,7 +62,7 @@
                 <a href="#deposit" class="sidebar-links"><i class="fa fa-wallet"></i> Wallet Deposit</a>
                 <a href="#withdrawal" class="sidebar-links"><i class="fa fa-download"></i> Withdrawal</a>
                 <a href="#referrals" class="sidebar-links"><i class="fa fa-users"></i> Refferals</a>
-                <a href="tel:+1 234 5678" class="sidebar-links"><i class="fa fa-headset"></i> Contact Support</a>
+                <a href="" class="sidebar-links"><i class="fa fa-headset"></i> Contact Support</a>
                 <a onclick="Logout()" class="sidebar-links"><i class="fa fa-arrow-right-from-bracket"></i> Logout</a>
             </div>
         </div>
@@ -66,7 +78,7 @@
                 <a href="#deposit" class="sidebar-links"><i class="fa fa-wallet"></i> Wallet Deposit</a>
                 <a href="#withdrawal" class="sidebar-links"><i class="fa fa-download"></i> Withdrawal</a>
                 <a href="#referrals" class="sidebar-links"><i class="fa fa-users"></i> Refferals</a>
-                <a href="tel:+1 234 5678" class="sidebar-links"><i class="fa fa-headset"></i> Contact Support</a>
+                <a href="" class="sidebar-links"><i class="fa fa-headset"></i> Contact Support</a>
                 <a onclick="Logout()" class="sidebar-links"><i class="fa fa-arrow-right-from-bracket"></i> Logout</a>
             </div>
         </div>
@@ -79,7 +91,6 @@
                     Dashboard
                 </div>
                 <div class="top-btn">
-                    <a href="#ex7" rel="modal:open" class="top-btn2">Invest</a>
                     <a href="#ex1" rel="modal:open" class="top-btn2">Withdrawal</a>
                 </div>
             </div>
@@ -146,55 +157,8 @@
 
 
             <!-- plans section -->
-            <div class="plan-container">
-                <div class="plan-menu">
-                    <div class="plan-card">
-                        <div class="plan-body">
-                            <h2 class="plan-title">Basic Plan</h2>
-                            <span class="plan-icon"><img src="images/paper-airplane-icon.png" height="150" width="150"
-                                    alt=""></span>
-                            <div class="plan-content">
-                                <li>Minimum investment- $50</li>
-                                <li>Maximum investment- $500</li>
-                                <li>Roi - 180%</li>
-                                <li>Duration - 4Days</li>
-                            </div>
-                            <button class="button" onclick="investplan('BSP')">Invest Now</button>
-                        </div>
-                    </div>
-    
-    
-                    <div class="plan-card active">
-                        <div class="plan-body">
-                            <h2 class="plan-title">Pro Plan</h2>
-                            <span class="plan-icon"><img src="images/paper-airplane-icon.png" height="150" width="150"
-                                alt=""></span>
-                            <div class="plan-content">
-    
-                                <li>Minimum investment- $1,000</li>
-                                <li>Maximum investment- $10,000</li>
-                                <li>Roi - 200%</li>
-                                <li>Duration - 4Days</li>
-                            </div>
-                            <button class="button" onclick="investplan('PRP')">Invest Now</button>
-                        </div>
-                    </div>
-    
-                    <div class="plan-card">
-                        <div class="plan-body">
-                            <h2 class="plan-title">Enthusiast Plan</h2>
-                            <span class="plan-icon"><img src="images/paper-airplane-icon.png" height="150" width="150"
-                                alt=""></span>
-                            <div class="plan-content">
-                                <li>Minimum investment- $10,000</li>
-                                <li>Maximum investment- > $50,000</li>
-                                <li>Roi - 200%</li>
-                                <li>Duration - 4Days</li>
-                            </div>
-                            <button class="button" onclick="investplan('ETP')">Invest Now</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="plan-container" id="invest-plan-container">
+                
             </div>
     
     
@@ -273,12 +237,6 @@
                         <h4>Pay using USDT</h4>
                         <a href="#ex3" class="payment-btn" rel="modal:open">Pay with USDT</a>
                     </div>
-
-                    <!-- <div class="deposit-card" style="display: block;">
-                        <img src="images/paypal.png" alt="">
-                        <h4>Pay using PayPal</h4>'
-                        <button class="deposit-btn">Pay with PayPal</button>
-                    </div> -->
                 </div>
             </div>
 
@@ -496,6 +454,6 @@
 <script src="js/Crypto.js"></script>
 <script src="js/main.js"></script>
 <script src="js/events.js"></script>
-<!-- <script src="js/session.js"></script> -->
+<script src="js/session.js"></script> 
 
 </html>

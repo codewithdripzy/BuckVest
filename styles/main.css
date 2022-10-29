@@ -461,3 +461,11 @@
     bottom: -20%;
   }
 }
+.alreadyInvested{
+    padding: 20px;
+    background-color: #880fc4;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px 0.2px #454545;
+    margin: 0px 25px;
+}
