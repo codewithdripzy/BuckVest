@@ -3,18 +3,26 @@
         public $email;
         Public $subject;
         public $message;
-        public $headers = "";
+        public $header = "";
 
         function sendMail(){
-            $this->header .= "From:elonbtcinvestment@gmail.com \r\n";
+            $this->header .= "From:info@buckvest.com \r\n";
             $this->header .= "Cc:{$this->email} \r\n";
             $this->header .= "MIME-Version: 1.0\r\n";
             $this->header .= "Content-type: text/html\r\n";
 
-            mail($this->email, $this->subject, $this->message, $this->headers);
+            // ini_set("SMPT", "sxb1plzcpnl489427.prod.sxb1.secureserver.net");
+            // ini_set("sendmail_from", "info@buckvest.com");
+            // ini_set("smtp_port", 465);
+
+            if(mail($this->email, $this->subject, $this->message, $this->header)){
+                return true;
+            }
+            return false;
         }
 
         function sendAccountVerificationMail($access_code, $fullname){
+            $this->subject = 'Account Verification';
             $this->message .= `<div class="email-container" style="border-radius: 20px;width: 40%;padding: 10px; text-align: center; background: #880fc4; font-family: Arial, Helvetica, sans-serif;">
                 <img src='./images/logo.png' style="padding: 20px;width: 200px;" alt='Buckvest Logo'/>
                 <h1 style="color: #fff;">BuckVest Email Verification</h1>
@@ -23,7 +31,15 @@
                 <div style="padding: 20px; color: #fff;">&copy; Buckvest 2022. All rights Reserved</div>
             </div>`;
             
-            $this->sendMail();
+            if($this->sendMail()){
+                return true;
+            }
+            return false;
         }
     }
+
+    $test = new Emailer();
+    $test->email = 'codewithdripzy@gmail.com';
+
+    $test->sendAccountVerificationMail('BCKVST', 'Bankole Emmanuel');
 ?>

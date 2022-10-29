@@ -135,7 +135,11 @@ function createSession(data) {
   sessionStorage.setItem('created', data.created);
   sessionStorage.setItem('modified', data.modified);
   sessionStorage.setItem('state', data.state);
-
+  sessionStorage.setItem('hasInvested', data.hasInvested);
+  sessionStorage.setItem('investment_plan', data.investment_plan);
+  sessionStorage.setItem('invested_amount', data.invested_amount);
+  sessionStorage.setItem('investment_started', data.invested_started);
+  
   return true;
 }
 

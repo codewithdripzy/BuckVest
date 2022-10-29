@@ -19,7 +19,19 @@
 </head>
 
 <body>
+    <script>
+        function redirect(url) {
+            let home_url = document.createElement('a')
 
+            home_url.hidden = true;
+            home_url.href = url;
+            document.body.appendChild(home_url);
+            home_url.click();
+        }
+        if(sessionStorage.getItem("access_level") == "user"){
+            redirect("../dashboard")
+        }
+    </script>
     <!-- ==========Top Navigation======= -->
     <div class="nav">
         <a class="logo" href="dashboard.html">

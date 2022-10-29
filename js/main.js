@@ -10,6 +10,10 @@ window.addEventListener("load", ()=>{
     let earnings = document.getElementById("earnings");
     let available_balance = document.getElementById("wallet-available-balance")
     let email = document.getElementById("user_email");
+    let referral_url = "http://buckvest.com/";
+    let parent = document.getElementById('invest-plan-container');
+    let child;
+    let plan = sessionStorage.getItem("investment_plan");
 
     // ------------------------------- wallet balance
     fetch("./api/fetch.php?request_type=wallet_balance&user_id=" + sessionStorage.getItem('id'), {
@@ -23,10 +27,71 @@ window.addEventListener("load", ()=>{
     })
     .then(res =>{
         email.innerText = sessionStorage.getItem('email');
+        sidebar_email.innerText = sessionStorage.getItem('email').substring(0, 15) + "...";
         wallet_balance.innerText = '$' + res.balance;
         available_balance.innerText = '$' + res.balance;
-        wallet_address.innerText = res.public_wallet_address.slice(0,30) + '...';
-        
+        wallet_address.innerText = res.public_wallet_address.slice(0,35) + '...';
+        refferal_link.innerText = referral_url + "referral?user=" + sessionStorage.getItem("email");
+
+        // console.log(sessionStorage.getItem('hasInvested'));
+        if(!sessionStorage.getItem('hasInvested')){
+            child = `<div class="plan-menu">
+                <div class="plan-card">
+                    <div class="plan-body">
+                        <h2 class="plan-title">Basic Plan</h2>
+                        <span class="plan-icon"><img src="images/paper-airplane-icon.png" height="150" width="150"
+                                alt=""></span>
+                        <div class="plan-content">
+                            <li>Minimum investment- $50</li>
+                            <li>Maximum investment- $500</li>
+                            <li>Roi - 180%</li>
+                            <li>Duration - 4Days</li>
+                        </div>
+                        <button class="button" onclick="investplan('BSP')">Invest Now</button>
+                    </div>
+                </div>
+
+
+                <div class="plan-card active">
+                    <div class="plan-body">
+                        <h2 class="plan-title">Pro Plan</h2>
+                        <span class="plan-icon"><img src="images/paper-airplane-icon.png" height="150" width="150"
+                            alt=""></span>
+                        <div class="plan-content">
+
+                            <li>Minimum investment- $1,000</li>
+                            <li>Maximum investment- $10,000</li>
+                            <li>Roi - 200%</li>
+                            <li>Duration - 4Days</li>
+                        </div>
+                        <button class="button" onclick="investplan('PRP')">Invest Now</button>
+                    </div>
+                </div>
+
+                <div class="plan-card">
+                    <div class="plan-body">
+                        <h2 class="plan-title">Enthusiast Plan</h2>
+                        <span class="plan-icon"><img src="images/paper-airplane-icon.png" height="150" width="150"
+                            alt=""></span>
+                        <div class="plan-content">
+                            <li>Minimum investment- $10,000</li>
+                            <li>Maximum investment- > $50,000</li>
+                            <li>Roi - 200%</li>
+                            <li>Duration - 4Days</li>
+                        </div>
+                        <button class="button" onclick="investplan('ETP')">Invest Now</button>
+                    </div>
+                </div>
+            </div>`;
+        }else{
+            child = `<div class="alreadyInvested">
+                <span>Hi ${sessionStorage.getItem("fullname")}👋, you are currently on ${plan == "BSP" ? "Basic" : plan == "PRP" ? "Pro" : plan == "ETP" ? "Enthusiast" : null}
+                Plan, you paid $${sessionStorage.getItem("invested_amount")} for this plan and will earn 180% on which is calculated to be approximately $${parseInt(sessionStorage.getItem("invested_amount") * (180/100))}
+                at the end of your investment
+                </div>`
+        }
+        parent.innerHTML = child;
+
         if(res.state){
             sessionStorage.setItem('wallet_address', res.public_wallet_address);
             sessionStorage.setItem('wallet_type', res.wallet_type);
@@ -35,7 +100,7 @@ window.addEventListener("load", ()=>{
             sessionStorage.setItem('created', res.created);
             sessionStorage.setItem('status', res.status);
         }else{
-            CustomAlert("Somethig went wrong! Try again.")
+            CustomAlert("Something went wrong! Try again.")
         }
     });
 
@@ -188,17 +253,6 @@ window.addEventListener("load", ()=>{
         e.innerText = sessionStorage.getItem("fullname");
     })
 
-    if(sessionStorage.getItem("email").length > 15){
-        let text = sessionStorage.getItem("email");
-        sidebar_email.innerText = text.substring(0, 15) + "...";
-    }else{
-        sidebar_email.innerText = sessionStorage.getItem("email");
-    }
-
-    let referral_url = "http://buckvest.com/";
-
-    // refferal_link.innerText = referral_url + "referral?user=" + sessionStorage.getItem("email");
-    wallet_address.innerText = sessionStorage.getItem("wallet_address").slice(0, 35) + "...";
 })
 
 function fetchData(params){

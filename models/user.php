@@ -156,7 +156,7 @@ class User
         return $stmt;
     }
 
-    function verifyAccount($email){
+    function verifyAccount($email, $user_id){
         if($this->emailExist($email)){
             $query = "UPDATE " . $this->table_name . "
             SET status = 1

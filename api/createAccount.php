@@ -40,14 +40,16 @@
                 $access_code = sha1(md5(date('d-m-y H:I:s'). rand(1, 1000000)));
                 session_start();
 
+                $emailer->email = $_REQUEST['email'];
                 $_SESSION['access_code'] = $access_code;
-                $_SESSION['expire'] = 30;
+                $_SESSION['expire'] = time();
 
-                if($emailer->sendAccountVerificationMail($access_code)){
+                if($emailer->sendAccountVerificationMail($access_code, $_REQUEST['fullname'])){
                     if ($user->createAccount()) {
                         $user->emailExist($_REQUEST['email']);
     
-                        $_SESSION['user_id'] = $user_id;
+                        $_SESSION['user_id'] = $user->id;
+                        $_SESSION['email'] = $_REQUEST['email'];
 
                         $wallet->user_id = $user->id;
                         $wallet->public_wallet_address = hash("sha256", $user->fullname . $user->email . $user->created . $user->status);
