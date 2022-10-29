@@ -14,7 +14,13 @@
 </head>
 
 <body>
+    <!-- ========scrollTop button============ -->
+    <button class="arrow-up-btn">
+        <i class="fas fa-arrow-up" aria-hidden="false"></i>
+    </button>
 
+
+    <!-- ==========Desktop Navigation==== -->
     <nav>
         <a class="logo" href="index.html">
             <img src="images/logo.png" alt="logo">
@@ -32,19 +38,16 @@
         </div>
     </nav>
 
-
+    <!-- ===========mobile Navigation============= -->
     <div class="sideNav" id="sidenav">
-        <a class="closeBtn" id="close"><i class="fas fa-times"></i></a>
-        <a href="index.html">Home</a>
-        <a href="about-us.html">About Us</a>
-        <a href="">Faq</a>
-        <a href="contact-us.html">Contact</a>
-
-        <a href="login.html"><button class="button">Login</button></a>
-
+        <span class="closeBtn" id="close"><i class="fas fa-times"></i></span>
+        <div class="sidebar-links-container">
+            <a href="index.html" class="sidebar-links"><i class="fas fa-home"></i>Home</a>
+            <a href="about-us.html" class="sidebar-links"><i class="fa fa-circle-info"></i>About Us</a>
+            <a href="contact-us.html" class="sidebar-links"><i class="fa fa-globe"></i> Contact</a>
+            <a href="login.html" class="sidebar-links button mobile-login-btn"><i class="fa fa-arrow-right-from-bracket"></i> Login</a>
+        </div>
     </div>
-
-
 
 
 
@@ -61,7 +64,6 @@
 
 
         <div class="services" id="services">
-<<<<<<< HEAD
             <div class="serv-content">
                 <div class="card">
                     <div class="box">
@@ -69,17 +71,6 @@
                         <div class="text">Founding</div>
                         <p> Buckvest was founded in Washington DC in 2015 and was jointly founded by
                             top investment institutions in the United States and Canada.</p>
-=======
-                <div class="serv-content">
-                    <div class="card">
-                        <div class="box">
-                            <i class="fas fa-paint-brush"></i>
-                            <div class="text">Founding</div>
-                            <p> BuckVest international group was founded in New York in 2009 and was jointly founded by
-                                top
-                                investment institutions in the United States and Canada.</p>
-                        </div>
->>>>>>> 39b4fb4111183995fa24b758dbe5e2dc3768bd63
                     </div>
                 </div>
                 <div class="card">
@@ -143,11 +134,8 @@
                                 <h1>Officially succeed in Blockchain</h1>
                                 <p>Our mining pools are located in more than 50 countries around the world. 75 mining
                                     farms have been established, with a total installed capacity of 800,000 graphics
-<<<<<<< HEAD
                                     cards and chip mining machines. Among them, Buckvest 30 large-scale blockchain
-=======
                                     cards and chip mining machines. Among them, BuckVest 30 large-scale blockchain
->>>>>>> 39b4fb4111183995fa24b758dbe5e2dc3768bd63
                                     mining farms around the world, deployed in United States, Russia, Kazakhstan,
                                     Venezuela, Mongolia, Norway, India and few other Europe countries, with a total
                                     power supply capacity of up to 600MW, which can run 400,000 mining machines at the
@@ -158,11 +146,8 @@
                         <li>
                             <div class="timeline-content">
                                 <h3 class="date">2025</h3>
-<<<<<<< HEAD
                                 <h1>The market value of Buckvest will reach US $500 Billion</h1>
-=======
                                 <h1>The market value of BuckVest will reach US $500 Billion</h1>
->>>>>>> 39b4fb4111183995fa24b758dbe5e2dc3768bd63
                                 <p>
                                 </p>
                             </div>
@@ -243,6 +228,25 @@
 
 </body>
 <script src="js/script.js"></script>
+<script src="js/jquery-3.6.0.min.js">
 
+</script><script type="text/javascript">
+        // ============scroll-up button===========
+        $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 300) {
+                $('.arrow-up-btn').fadeIn(250);
+            }
+            else {
+                $('.arrow-up-btn').fadeOut(250);
+            }
+        });
+        $('.arrow-up-btn').click(function () {
+            $('html,body').animate(
+                { scrollTop: 0 }, 400
+            );
+        });
+    });
+</script>
 
 </html>

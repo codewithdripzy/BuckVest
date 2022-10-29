@@ -9,19 +9,16 @@
     <meta name="keyword">
     <title>BuckVest</title>
     <link rel="canonical" href="http://buckvest.com/" />
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="http://localhost/webicons/css/all.css">
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./swiper-assests/swiper-bundle.min.css">
-
-
 </head>
 
 <body>
-
     <!-- ========scrollTop button============ -->
     <button class="arrow-up-btn">
         <i class="fas fa-arrow-up" aria-hidden="false"></i>
@@ -49,15 +46,15 @@
 
     <!-- ===========mobile Navigation============= -->
     <div class="sideNav" id="sidenav">
-        <a class="closeBtn" id="close"><i class="fas fa-times"></i></a>
-        <a href="index.html">Home</a>
-        <!-- <a href="">Services</a> -->
-        <a href="about-us.html">About Us</a>
-        <a href="">Faq</a>
-        <a href="contact-us.html">Contact</a>
-
-        <a href="login.html"><button class="button">Login</button></a>
-
+        <span class="closeBtn" id="close"><i class="fas fa-times"></i></span>
+        <div class="sidebar-links-container">
+            <a href="index.html" class="sidebar-links"><i class="fas fa-home"></i>Home</a>
+            <a href="#plan" class="sidebar-links"><i class="fas fa-paper-plane"></i>Plan</a>
+            <a href="#faq" class="sidebar-links"><i class="fas fa-question"></i>Faq</a>
+            <a href="about-us.html" class="sidebar-links"><i class="fa fa-circle-info"></i>About Us</a>
+            <a href="contact-us.html" class="sidebar-links"><i class="fa fa-globe"></i> Contact</a>
+            <a href="login.html" class="sidebar-links button mobile-login-btn"><i class="fa fa-arrow-right-from-bracket"></i> Login</a>
+        </div>
     </div>
 
 
@@ -101,7 +98,7 @@
 
 
         <!-- ========Package menu========== -->
-        <div class="plan-container">
+        <div class="plan-container" id="plan">
             <div class="plan-menu">
                 <div class="plan-card">
                     <div class="plan-body">
@@ -109,10 +106,10 @@
                         <span class="plan-icon"><img src="images/paper-airplane-icon.png" height="150" width="150"
                                 alt=""></span>
                         <div class="plan-content">
-                            <li>Minimum investment- $50</li>
+                            <li>Minimum investment- $100</li>
                             <li>Maximum investment- $500</li>
                             <li>Roi - 180%</li>
-                            <li>Duration - 4Days</li>
+                            <li>Duration - 30Days</li>
                         </div>
                         <a href="login"><button class="button">Invest Now</button></a>
                     </div>
@@ -129,7 +126,7 @@
                             <li>Minimum investment- $1,000</li>
                             <li>Maximum investment- $10,000</li>
                             <li>Roi - 200%</li>
-                            <li>Duration - 4Days</li>
+                            <li>Duration - 30Days</li>
                         </div>
                         <a href="login"><button class="button">Invest Now</button></a>
                     </div>
@@ -144,7 +141,7 @@
                             <li>Minimum investment- $10,000</li>
                             <li>Maximum investment- $50,000</li>
                             <li>Roi - 200%</li>
-                            <li>Duration - 4Days</li>
+                            <li>Duration - 30Days</li>
                         </div>
                         <a href="login"><button class="button">Invest Now</button></a>
                     </div>
@@ -467,17 +464,6 @@
                 { scrollTop: 0 }, 400
             );
         });
-    });
-
-    function preloaderFadeOutInit() {
-        $('.preloader').delay(2000).fadeOut('slow');
-        $('body').removeClass('loading');
-    }
-
-    jQuery(window).on('load', function () {
-        (function ($) {
-            preloaderFadeOutInit();
-        })(jQuery);
     });
 </script>
 

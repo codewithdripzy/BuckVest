@@ -6,17 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
     <link rel="stylesheet" href="styles/contact-us.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="/swiper-assests/swiper-bundle.min.css">
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
 </head>
 
 <body>
+    <!-- ========scrollTop button============ -->
+    <button class="arrow-up-btn">
+        <i class="fas fa-arrow-up" aria-hidden="false"></i>
+    </button>
 
+
+    <!-- ==========Desktop Navigation==== -->
     <nav>
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="logo">
@@ -34,15 +37,16 @@
     </nav>
 
 
+    <!-- ===========mobile Navigation============= -->
     <div class="sideNav" id="sidenav">
-        <a class="closeBtn" id="close"><i class="fas fa-times"></i></a>
-        <a href="index.html">Home</a>
-        <a href="about-us.html">About Us</a>
-        <a href="contact-us.html">Contact</a>
-        <a href="login.html"><button class="button">Login</button></a>
-
+        <span class="closeBtn" id="close"><i class="fas fa-times"></i></span>
+        <div class="sidebar-links-container">
+            <a href="index.html" class="sidebar-links"><i class="fas fa-home"></i>Home</a>
+            <a href="about-us.html" class="sidebar-links"><i class="fa fa-circle-info"></i>About Us</a>
+            <a href="contact-us.html" class="sidebar-links"><i class="fa fa-globe"></i> Contact</a>
+            <a href="login" class="sidebar-links button mobile-login-btn"><i class="fa fa-arrow-right-from-bracket"></i> Login</a>
+        </div>
     </div>
-
 
 
     <div class="contact-heading">
@@ -54,81 +58,81 @@
 
     <main>
         <!-- <div class="contact-container"> -->
-            <div class="contact-card-container">
-                <div class="contact-card">
-                    <div class="contact-card-content">
-                        <div class="contact-card-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div>
-                            <h2>Info</h2>
-                            <span>Website</span>
-                            <p><a href="index.html">http://www.buckvest.com</a></p>
-                            <span>Email</span>
-                            <a rel="mailto:elonbtcinvestment@gmail.com"></a>
-                        </div>
+        <div class="contact-card-container">
+            <div class="contact-card">
+                <div class="contact-card-content">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <h2>Info</h2>
+                        <span>Website</span>
+                        <p><a href="index.html">http://www.buckvest.com</a></p>
+                        <a href="mailto:info@buckvest.com">Email</a>
+                        <span>info@buckvest.com</span>
                     </div>
                 </div>
-
-                <div class="contact-card">
-                    <div class="contact-card-content">
-                        <div class="contact-card-icon">
-                            <i class="fab fa-twitter"></i>
-                        </div>
-                        <div class="contact-card-text">
-                            <h2>Twitter</h2>
-                            <p>@buckvest</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="contact-card">
-                    <div class="contact-card-content">
-                        <div class="contact-card-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div>
-                            <h2>Instagram</h2>
-                            <p>@buckvest</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="contact-card">
+                <div class="contact-card-content">
+                    <div class="contact-card-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="contact-card-text">
+                        <h2>Twitter</h2>
+                        <p>@buckvest</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="contact-card">
+                <div class="contact-card-content">
+                    <div class="contact-card-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div>
+                        <h2>Instagram</h2>
+                        <p>@buckvest</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         <!-- </div> -->
 
 
-            <div class="contact-form-container">
-                <div class="contact-form">
+        <div class="contact-form-container">
+            <div class="contact-form">
 
-                    <div class="contact-form-title">
-                        <h4>GET IN TOUCH</h4>
-                        <h1>Send Us a Message</h1>
-                    </div>
+                <div class="contact-form-title">
+                    <h4>GET IN TOUCH</h4>
+                    <h1>Send Us a Message</h1>
+                </div>
 
-                    <div class="form-container">
-                        <form action="mail_handler.php" method="post">
-                            <div class="form-input">
-                                <input type="text" name="first_name" placeholder="First name">
-                                <br>
-                                <input type="text" name="last_name" placeholder="Second Name">
-                                <br>
-                                <input type="email" name="email" placeholder="Email">
-                            </div>
-                            <!-- <div class="form-input"> -->
-                                <!-- <input type="text" name="subject" placeholder="Subject"> -->
-                            <!-- </div> -->
-                            <textarea name="message" id="" cols="30" rows="10" placeholder="Message"
-                                maxlength="150"></textarea><br>
-                            <input type="submit" name="submit" value="Submit" class="button"></input>
-                        </form>
-                    </div>
-
+                <div class="form-container">
+                    <form action="mail_handler.php" method="post">
+                        <div class="form-input">
+                            <input type="text" name="first_name" placeholder="First name">
+                            <br>
+                            <input type="text" name="last_name" placeholder="Second Name">
+                            <br>
+                            <input type="email" name="email" placeholder="Email">
+                        </div>
+                        <!-- <div class="form-input"> -->
+                        <!-- <input type="text" name="subject" placeholder="Subject"> -->
+                        <!-- </div> -->
+                        <textarea name="message" id="" cols="30" rows="10" placeholder="Message"
+                            maxlength="150"></textarea><br>
+                        <input type="submit" name="submit" value="Submit" class="button"></input>
+                    </form>
                 </div>
 
             </div>
+
+        </div>
 
 
     </main>
@@ -167,13 +171,30 @@
     </div>
 
 
-    <script>
-        AOS.init();
-    </script>
-
-
-    <script src="js/script.js"></script>
 
 </body>
+
+<script src="js/script.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript">
+    // ============scroll-up button===========
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 300) {
+                $('.arrow-up-btn').fadeIn(250);
+            }
+            else {
+                $('.arrow-up-btn').fadeOut(250);
+            }
+        });
+        $('.arrow-up-btn').click(function () {
+            $('html,body').animate(
+                { scrollTop: 0 }, 400
+            );
+        });
+    });
+
+</script>
 
 </html>

@@ -86,7 +86,6 @@ main {
   border          : 2px solid #de9f21;
   border-radius   : 20px;
   transition      : 0.3s ease all;
-  /* margin-left  : 10px; */
 }
 
 .button:hover {
@@ -191,6 +190,11 @@ nav ul li a:hover:before {
 }
 
 /* style for mobile navigation */
+
+.mobile-login-btn{
+  margin-top: 20% !important;
+}
+
 .sideNav {
   height          : 100%;
   width           : 250px;
@@ -201,42 +205,67 @@ nav ul li a:hover:before {
   overflow-x      : hidden;
   transition      : .5s;
   padding-top     : 60px;
-  z-index         : 999;
+  z-index         : 9999;
   display         : none;
-  animation       : slide-in .6s;
+  animation       : slide-in .8s;
   opacity         : 1;
 }
 
 @keyframes slide-in {
   0% {
-    transform: translateX(200px);
+      transform: translateX(200px);
   }
 
   100% {
-    transform: translateX(0px);
+      transform: translateX(0px);
   }
-}
-
-.sideNav a {
-  padding        : 8px 8px 8px 40px;
-  display        : block;
-  font-size      : 20px;
-  color          : #ffffff;
-  transition     : .3s;
-  text-decoration: none;
-}
-
-.sideNav a:hover {
-  color: white;
 }
 
 .sideNav .closeBtn {
   position   : absolute;
-  top        : 10px;
-  right      : 25px;
+  top        : 25px;
+  right      : 10px;
   font-size  : 24px;
   margin-left: 50px;
   cursor     : pointer;
+  color      : #fff;
+}
+
+  .sidebar {
+  width           : 20vw;
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  background-color: #070707;
+  color           : #fff;
+  height          : 100vh;
+  margin-top      : 70px;
+
+}
+
+.sidebar-links-container {
+  display   : block;
+  margin-top: 10px;
+}
+
+.sidebar-links {
+  display                   : block;
+  padding                   : 20px;
+  text-decoration           : none;
+  color                     : #fff;
+  cursor                    : pointer;
+  transition                : 0.3s ease 1;
+  border-top-right-radius   : 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.sidebar-links i {
+  margin-right: 10px;
+}
+
+.sidebar-links:hover {
+  background: #de9f21;
+  transition: 0.3s ease 1;
 }
 
 /* Get started styling */
@@ -738,6 +767,10 @@ input {
 
   .hamburger {
     display: flex;
+  }
+
+  .logo-img{
+    z-index: 1;
   }
 
   nav .navLinks {

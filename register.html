@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
-    <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
         rel="stylesheet" />
@@ -16,6 +15,7 @@
 </head>
 
 <body>
+    <!-- ==========Desktop Navigation==== -->
     <nav>
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="logo">
@@ -33,19 +33,17 @@
         </div>
     </nav>
 
+        <!-- ===========mobile Navigation============= -->
+        <div class="sideNav" id="sidenav">
+            <span class="closeBtn" id="close"><i class="fas fa-times"></i></span>
+            <div class="sidebar-links-container">
+                <a href="index.html" class="sidebar-links"><i class="fas fa-home"></i>Home</a>
+                <a href="about-us.html" class="sidebar-links"><i class="fa fa-circle-info"></i>About Us</a>
+                <a href="contact-us.html" class="sidebar-links"><i class="fa fa-globe"></i> Contact</a>
+                <a href="login.html" class="sidebar-links button mobile-login-btn"><i class="fa fa-arrow-right-from-bracket"></i> Login</a>
+            </div>
+        </div>
 
-    <div class="sideNav" id="sidenav">
-        <a class="closeBtn" id="close"><i class="fas fa-times"></i></a>
-        <a href="index.html">Home</a>
-        <a href="">About Us</a>
-        <a href="contact-us.html">Contact</a>
-
-        <a href="login.html"><button class="button">Login</button></a>
-
-    </div>
-
-
-    </div>
 
     <ul class="circles">
         <li></li>
@@ -100,13 +98,10 @@
 
     </main>
 
-    <!-- <script src="js/script.js"></script> -->
 </body>
-
-<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/script.js"></script>
 <script src="js/events.js"></script>
 <script src="js/requests.js"></script>
 <script src="js/login_checker.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 
 </html>
