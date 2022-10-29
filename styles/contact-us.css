@@ -120,10 +120,6 @@
 }
 
 @Media screen and (max-width:578px) {
-    .contact-card-container {
-        /* display: block; */
-    }
-
     .form-container input,
     .form-container textarea {
         width: 300px;

@@ -73,7 +73,6 @@
 .services .serv-content .card .text{
   font-size: 25px;
   font-weight: 500;
-  /* margin: 10px 0 7px 0; */
 }
 
 
@@ -174,31 +173,6 @@
 .tech-desc p {
   font-size: 20px;
   line-height: 2rem;
-  /* padding  : 40px; */
-  /* width    : 800px; */
-}
-
-.affilations-container {
-  color     : #ffffff;
-  text-align: center;
-}
-
-.affilations-menu {
-  display        : flex;
-  flex-direction : row;
-  justify-content: center;
-  align-items    : center;
-}
-
-.affliation-card {
-  display         : inline-block;
-  padding         : 30px;
-  width           : fit-content;
-  background-color: #fff;
-  box-shadow      : 0px 0px 5px 0.5px #ccc;
-  border-radius   : 20px;
-  text-align      : center;
-  margin          : 8px;
 }
 
 
@@ -206,7 +180,6 @@
 
   .services .serv-content .card{
     width: fit-content;
-    /* margin: 8px; */
   }
   
   .tech-content{
@@ -214,12 +187,7 @@
   }
 
   .tech-img{
-    /* width: fit-content; */
     height: 320px;
-  }
-
-  .affilations-menu{
-    overflow-x: scroll;
   }
 }
 

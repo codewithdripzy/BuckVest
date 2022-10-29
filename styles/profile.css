@@ -1,12 +1,10 @@
 .profile-tab {
-    /* margin: 20px 0px 0px 20px; */
     display: flex;
     flex-wrap: wrap;
     column-gap: 10px;
     justify-content: center;
     align-items: center;
     padding: 0px;
-    /* border: 2px solid black; */
 }
 
 [data-tab-info] {

@@ -351,12 +351,13 @@ a {
 }
 
 .modal-content h1 {
-    font-size: 28px;
+    font-size: 34px;
 }
 
-#wallet-balance {
-    font-size    : 35px;
+#wallet-available-balance {
+    font-size    : 45px;
     margin-bottom: 10px;
+    font-weight: 800;
 }
 
 .modal-content h3 {

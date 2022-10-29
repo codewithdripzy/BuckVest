@@ -5,8 +5,7 @@
     justify-content: center;
     align-items: center;
     padding         : 20px;
-    /* background-color: #fff; */
-    border-radius   : 20px;   
+    border-radius   : 20px;
     margin: 20px 20px 20px 10px;
 }
 
@@ -60,7 +59,7 @@
     .deposit-card-menu{
         display: block;
     }
-    
+
     .deposit-card{
         width: 300px;
     }

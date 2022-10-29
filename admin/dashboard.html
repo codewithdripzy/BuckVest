@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="../styles/jquery.modal.min.css">
     <link rel="stylesheet" href="../styles/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="../styles/dataTables.jqueryui.min.css">
-    <link rel="stylesheet" href="../styles/scroller.jqueryui.min.css">
     <link rel="stylesheet" href="../styles/responsive.dataTables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" /> -->
     <link rel="shortcut icon" href="../images/favicon.png" type="image/x-icon">
 </head>
@@ -49,7 +49,7 @@
                 <a href="#investment" class="sidebar-links"><i class="fas fa-hand-holding-dollar"></i> Manage Investments</a>
                 <a href="#referrals" class="sidebar-links"><i class="fas fa-arrows-down-to-people"></i> Manage Referrals</a>
                 <a href="#deposit" class="sidebar-links"><i class="fa fa-wallet"></i> User Deposit</a>
-                <a href="#withdrawal" class="sidebar-links"><i class="fa fa-download"></i> User Withdrawal</a>
+                <a href="#withdrawals" class="sidebar-links"><i class="fa fa-download"></i> User Withdrawal</a>
                 <a onclick="Logout()" class="sidebar-links"><i class="fa fa-arrow-right-from-bracket"></i> Logout</a>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 <a href="#investment" class="sidebar-links"><i class="fa fa-hand-holding-dollar"></i> Manage Investments</a>
                 <a href="#referrals" class="sidebar-links"><i class="fa fa-arrows-down-to-people"></i> Manage Referrals</a>
                 <a href="#deposit" class="sidebar-links"><i class="fa fa-wallet"></i> User Deposit</a>
-                <a href="#withdrawal" class="sidebar-links"><i class="fas fa-download"></i> User Withdrawal</a>
+                <a href="#withdrawals" class="sidebar-links"><i class="fas fa-download"></i> User Withdrawal</a>
                 <a onclick="Logout()" class="sidebar-links"><i class="fa fa-arrow-right-from-bracket"></i> Logout</a>
             </div>
         </div>
@@ -234,7 +234,7 @@
                     <div class="table-header">
                         All Users
                     </div>
-                    <table id="example1" class="display styled-table" style="width: 100%;">
+                    <table  id="user_table" class="display styled-table" style="width: 100%;">
                         <thead>
                             <th>Name</th>
                             <th>Email</th>
@@ -263,7 +263,7 @@
                         Users Deposit
                     </div>
 
-                    <table id="example2" class="display styled-table" width="100%">
+                    <table id="deposit_table" class="display styled-table" width="100%">
                         <thead>
                             <th>Reference No</th>
                             <th>Deposit Method</th>
@@ -290,7 +290,7 @@
                         Users Withdrawal
                     </div>
 
-                    <table id="example2" class="display styled-table" width="100%">
+                    <table id="withdrawal_table" class="display styled-table" width="100%">
                         <thead>
                             <th>Reference No</th>
                             <th>Withdrawal Method</th>
@@ -304,7 +304,6 @@
                         </thead>
 
                         <tbody id="withdrawal-table">
-                            
                         </tbody>
                     </table>
                 </div>
@@ -315,7 +314,7 @@
                         Users Transactions
                     </div>
 
-                    <table id="example3" class="display styled-table" style="width: 100%;">
+                    <table id="transaction_table" class="display styled-table" style="width: 100%;">
                         <thead>
                             <th>From Wallet</th>
                             <th>To Wallet</th>
@@ -342,7 +341,7 @@
                     <div class="table-header">
                         Manage Referrals
                     </div><br>
-                    <table id="example4" class="display styled-table" style="width: 100%;">
+                    <table id="referral_table" class="display styled-table" style="width: 100%;">
                         <thead>
                             <th>Fullname</th>
                             <th>Email</th>
@@ -369,17 +368,19 @@
 
 
 <script src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 <!-- <script src="../js/jquery.dataTables.min.js"></script> -->
 <script src="../js/dataTables.jqueryui.min.js"></script>
-<script src="../js/scroller.jqueryui.min.js"></script>
+<!-- <script src="../js/scroller.jqueryui.min.js"></script> -->
 <script src="../js/responsive.dataTables.min.js"></script>
+<script src="../js/script.js"></script>
 <script src="../js/jquery.modal.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#example1,#example2,#example3,#example4').DataTable();
+        $('#user_table,#deposit_table,#withdrawal_table,#referral_table').DataTable();
     })
 </script>
 <script src="../js/admin.js"></script>
-<!-- <script src="../js/session.js"></script> -->
+<script src="../js/session.js"></script>
 
 </html>
