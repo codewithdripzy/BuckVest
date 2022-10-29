@@ -854,6 +854,16 @@ input {
   #inview-example {
     display: block;
   }
+
+  .news-send{
+    margin-top: 20px;
+  }
+
+  .newsletter .news-send i{
+    color: #ffffff;
+    /* padding: 0 8px; */
+    /* font-size: 18px; */
+  }
 }
 
 
@@ -957,9 +967,17 @@ input {
 
 }
 
-@media screen and (max-width:1200px) {}
+@media screen and (max-width:1200px) {
+  .sidebar{
+    display: none;
+  }
+}
 
-@media screen and (max-width: 1400px) {}
+@media screen and (max-width: 1400px) {
+  .sidebar{
+    display: none;
+  }
+}
 
 
 
