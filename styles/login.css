@@ -82,14 +82,14 @@ form {
 }
 
 .other-links{
-    margin-top: 10px;
-    color: #f0f0f0;
+    margin-top: 10px !important;
+    color: #f0f0f0 !important;
 }
 
 .other-links a{
-    color: #de9f21;
-    font-weight: bold;
-    text-decoration: none;
+    color: #de9f21 !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
 }
 
 .fpass{
